@@ -1,0 +1,4 @@
+screen: 2
+feature: 1
+seats: 1
+space: 1

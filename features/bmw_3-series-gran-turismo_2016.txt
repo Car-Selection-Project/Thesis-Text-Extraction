@@ -1,0 +1,2 @@
+seats: 1
+room: 1

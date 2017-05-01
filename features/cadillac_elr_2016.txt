@@ -1,0 +1,3 @@
+price: 1
+screen: 1
+Seats: 1

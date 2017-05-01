@@ -1,0 +1,9 @@
+system: 2
+transmission: 1
+Technology: 1
+wheel: 1
+Fuel: 1
+Interior: 1
+power: 1
+time: 1
+Safety: 1

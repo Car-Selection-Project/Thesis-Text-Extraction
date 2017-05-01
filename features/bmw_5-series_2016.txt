@@ -1,0 +1,10 @@
+drive: 3
+noise: 2
+vehicle: 2
+feature: 1
+engine: 1
+year: 1
+fuel: 1
+gas: 1
+quality: 1
+mileage: 1

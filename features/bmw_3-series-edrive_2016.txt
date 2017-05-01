@@ -1,0 +1,8 @@
+fuel: 3
+seats: 3
+performance: 2
+engine: 2
+time: 1
+drive: 1
+ride: 1
+speed: 1

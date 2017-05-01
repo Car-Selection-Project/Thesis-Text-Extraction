@@ -1,0 +1,7 @@
+seat: 1
+handle: 1
+power: 1
+drive: 1
+look: 1
+vehicle: 1
+interior: 1

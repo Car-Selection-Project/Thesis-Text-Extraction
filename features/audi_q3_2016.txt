@@ -1,0 +1,3 @@
+gas: 1
+Interior: 1
+space: 1

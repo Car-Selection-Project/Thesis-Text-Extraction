@@ -1,0 +1,4 @@
+price: 1
+model: 1
+ride: 1
+quality: 1

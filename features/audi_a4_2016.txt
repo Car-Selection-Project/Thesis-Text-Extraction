@@ -1,0 +1,3 @@
+design: 1
+drive: 1
+speed: 1

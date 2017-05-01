@@ -1,0 +1,6 @@
+system: 1
+transmission: 1
+engine: 1
+safety: 1
+ride: 1
+room: 1

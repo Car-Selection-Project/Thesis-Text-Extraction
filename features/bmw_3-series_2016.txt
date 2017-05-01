@@ -1,0 +1,9 @@
+seats: 3
+quality: 2
+engine: 1
+design: 1
+power: 1
+drive: 1
+value: 1
+ride: 1
+interior: 1

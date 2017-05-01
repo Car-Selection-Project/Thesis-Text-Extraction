@@ -1,0 +1,5 @@
+visibility: 1
+issue: 1
+power: 1
+ride: 1
+vehicle: 1

@@ -1,0 +1,6 @@
+quality: 2
+drive: 1
+experience: 1
+value: 1
+look: 1
+room: 1

@@ -1,0 +1,8 @@
+seats: 3
+space: 2
+seat: 1
+price: 1
+gas: 1
+time: 1
+vehicle: 1
+mileage: 1

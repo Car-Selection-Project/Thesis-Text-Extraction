@@ -1,0 +1,5 @@
+issue: 3
+transmission: 2
+speed: 2
+model: 1
+ride: 1

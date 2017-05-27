@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author Koen
- *
- */
-package readJSON;

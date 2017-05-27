@@ -1,3 +1,0 @@
-engine: 2
-transmission: 1
-drive: 1

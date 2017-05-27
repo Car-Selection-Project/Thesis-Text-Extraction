@@ -1,2 +1,0 @@
-issue: 1
-interior: 1

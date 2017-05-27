@@ -1,6 +1,0 @@
-issue: 1
-Quality: 1
-wheel: 1
-safety: 1
-drive: 1
-vehicle: 1

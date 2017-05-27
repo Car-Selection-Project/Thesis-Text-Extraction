@@ -1,4 +1,0 @@
-control: 1
-space: 1
-vehicle: 1
-interior: 1

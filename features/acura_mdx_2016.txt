@@ -1,7 +1,0 @@
-drive: 2
-transmission: 1
-system: 1
-feature: 1
-engine: 1
-technology: 1
-speed: 1

@@ -1,7 +1,0 @@
-interior: 2
-seat: 1
-performance: 1
-engine: 1
-gas: 1
-technology: 1
-speed: 1

@@ -1,5 +1,0 @@
-seat: 3
-time: 2
-ride: 2
-sound: 1
-vehicle: 1

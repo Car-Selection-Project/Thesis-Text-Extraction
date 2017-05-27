@@ -1,5 +1,0 @@
-system: 1
-engine: 1
-gas: 1
-space: 1
-Engine: 1

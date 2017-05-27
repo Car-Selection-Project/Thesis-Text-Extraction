@@ -1,2 +1,0 @@
-YEAR: 2
-model: 1

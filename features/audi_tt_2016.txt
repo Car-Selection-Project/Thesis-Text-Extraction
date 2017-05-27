@@ -1,5 +1,0 @@
-performance: 2
-drive: 2
-transmission: 1
-engine: 1
-seats: 1

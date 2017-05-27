@@ -1,7 +1,0 @@
-price: 3
-engine: 2
-visibility: 1
-technology: 1
-vehicle: 1
-interior: 1
-quality: 1

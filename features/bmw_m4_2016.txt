@@ -1,2 +1,0 @@
-space: 3
-seats: 1

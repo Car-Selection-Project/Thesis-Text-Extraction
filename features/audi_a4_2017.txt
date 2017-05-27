@@ -1,8 +1,0 @@
-design: 2
-technology: 2
-price: 1
-model: 1
-time: 1
-seats: 1
-room: 1
-interior: 1

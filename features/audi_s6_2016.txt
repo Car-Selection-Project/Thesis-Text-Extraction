@@ -1,7 +1,0 @@
-drive: 2
-system: 1
-year: 1
-sound: 1
-gas: 1
-look: 1
-seats: 1

@@ -1,3 +1,0 @@
-engine: 1
-power: 1
-drive: 1

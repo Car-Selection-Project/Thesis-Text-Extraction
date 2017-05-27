@@ -1,4 +1,0 @@
-system: 3
-feature: 1
-Safety: 1
-technology: 1

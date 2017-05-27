@@ -1,5 +1,0 @@
-engine: 2
-gas: 2
-noise: 1
-seats: 1
-Engine: 1

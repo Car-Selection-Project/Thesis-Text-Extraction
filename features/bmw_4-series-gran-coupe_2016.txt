@@ -1,6 +1,0 @@
-price: 1
-time: 1
-drive: 1
-seats: 1
-interior: 1
-vehicle: 1

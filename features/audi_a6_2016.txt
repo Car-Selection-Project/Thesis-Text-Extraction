@@ -1,5 +1,0 @@
-gas: 1
-screen: 1
-time: 1
-value: 1
-mileage: 1

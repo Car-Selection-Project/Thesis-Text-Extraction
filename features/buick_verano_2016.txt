@@ -1,9 +1,0 @@
-design: 2
-control: 2
-power: 2
-interior: 2
-accelaration: 1
-issue: 1
-wheel: 1
-speed: 1
-vehicle: 1

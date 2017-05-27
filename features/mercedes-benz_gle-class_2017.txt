@@ -1,4 +1,0 @@
-adaptive control
-Sentiment: 3.0
-interior design
-Sentiment: 3.0

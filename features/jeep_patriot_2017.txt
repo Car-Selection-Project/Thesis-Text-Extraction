@@ -1,2 +1,0 @@
-low price
-Sentiment: 2.0

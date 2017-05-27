@@ -1,8 +1,0 @@
-easy system
-Sentiment: 3.0
-useless seat
-Sentiment: 2.0
-manual transmission
-Sentiment: 3.0
-minor issue
-Sentiment: 3.0

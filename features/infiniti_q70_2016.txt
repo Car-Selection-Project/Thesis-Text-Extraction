@@ -1,6 +1,0 @@
-great car
-Sentiment: 4.0
-perfect camera
-Sentiment: 4.0
-driving camera
-Sentiment: 3.0

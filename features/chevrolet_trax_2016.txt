@@ -1,4 +1,0 @@
-small engine
-Sentiment: 3.0
-excellent space
-Sentiment: 4.0

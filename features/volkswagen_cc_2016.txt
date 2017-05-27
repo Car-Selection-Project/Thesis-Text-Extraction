@@ -1,6 +1,0 @@
-handling speed
-Sentiment: 3.0
-low speed
-Sentiment: 3.0
-loud sound
-Sentiment: 3.0

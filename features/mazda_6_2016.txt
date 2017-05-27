@@ -1,8 +1,0 @@
-nice trunk
-Sentiment: 4.0
-normal driving
-Sentiment: 3.0
-back seat
-Sentiment: 3.0
-interior noise
-Sentiment: 3.0

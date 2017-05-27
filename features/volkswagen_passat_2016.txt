@@ -1,8 +1,0 @@
-actual space
-Sentiment: 3.0
-decent mileage
-Sentiment: 4.0
-good power
-Sentiment: 4.0
-great shape
-Sentiment: 4.0

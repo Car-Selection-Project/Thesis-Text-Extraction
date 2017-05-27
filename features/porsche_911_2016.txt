@@ -1,8 +1,0 @@
-terrific ride
-Sentiment: 5.0
-manual transmission
-Sentiment: 3.0
-larger engine
-Sentiment: 3.0
-poor technology
-Sentiment: 3.0

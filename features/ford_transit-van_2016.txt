@@ -1,8 +1,0 @@
-tiny camera
-Sentiment: 3.0
-rear camera
-Sentiment: 3.0
-hard time
-Sentiment: 3.0
-rear camera
-Sentiment: 3.0

@@ -1,6 +1,0 @@
-excellent ride
-Sentiment: 5.0
-upscale interior
-Sentiment: 3.0
-2nd seat
-Sentiment: 3.0

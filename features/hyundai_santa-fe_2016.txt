@@ -1,8 +1,0 @@
-great ride
-Sentiment: 4.0
-great seating
-Sentiment: 4.0
-front seat
-Sentiment: 3.0
-recommend vehicle
-Sentiment: 4.0

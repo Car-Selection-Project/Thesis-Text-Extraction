@@ -1,8 +1,0 @@
-modest vehicle
-Sentiment: 3.0
-simple vehicle
-Sentiment: 3.0
-basic vehicle
-Sentiment: 3.0
-good addition
-Sentiment: 4.0

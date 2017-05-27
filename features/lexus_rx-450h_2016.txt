@@ -1,8 +1,0 @@
-latest technology
-Sentiment: 3.0
-fantastic experience
-Sentiment: 4.0
-high system
-Sentiment: 3.0
-comfortable ride
-Sentiment: 4.0

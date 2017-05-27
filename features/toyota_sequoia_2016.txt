@@ -1,8 +1,0 @@
-perfect comfort
-Sentiment: 4.0
-poor mileage
-Sentiment: 2.0
-good boat
-Sentiment: 4.0
-great choice
-Sentiment: 4.0

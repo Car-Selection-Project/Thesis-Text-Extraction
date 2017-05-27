@@ -1,4 +1,0 @@
-great deal
-Sentiment: 4.0
-good review
-Sentiment: 4.0

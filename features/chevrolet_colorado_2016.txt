@@ -1,4 +1,0 @@
-great truck
-Sentiment: 3.0
-love rating
-Sentiment: 4.0

@@ -1,6 +1,0 @@
-quieter engine
-Sentiment: 3.0
-great acceleration
-Sentiment: 4.0
-decked-out model
-Sentiment: 3.0

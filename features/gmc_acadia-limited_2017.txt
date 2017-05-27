@@ -1,8 +1,0 @@
-good weather
-Sentiment: 4.0
-easy feature
-Sentiment: 3.0
-alert feature
-Sentiment: 3.0
-backup camera
-Sentiment: 3.0

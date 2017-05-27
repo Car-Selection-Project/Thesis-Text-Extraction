@@ -1,8 +1,0 @@
-final price
-Sentiment: 4.0
-rear camera
-Sentiment: 3.0
-good trade-off
-Sentiment: 4.0
-driving home
-Sentiment: 3.0

@@ -1,8 +1,0 @@
-pushed.if engine
-Sentiment: 3.0
-tight feature
-Sentiment: 3.0
-versatile vehicle
-Sentiment: 3.0
-love smoothness
-Sentiment: 3.0

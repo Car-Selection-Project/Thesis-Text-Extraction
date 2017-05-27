@@ -1,8 +1,0 @@
-driving car
-Sentiment: 3.0
-lanewatch camera
-Sentiment: 3.0
-not verify issue
-Sentiment: 2.0
-turn-key experience
-Sentiment: 3.0

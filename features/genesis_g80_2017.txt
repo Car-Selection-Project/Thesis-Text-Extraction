@@ -1,6 +1,0 @@
-good system
-Sentiment: 4.0
-surround sound
-Sentiment: 3.0
-fantastic system
-Sentiment: 4.0

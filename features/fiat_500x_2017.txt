@@ -1,8 +1,0 @@
-uncomfortable vehicle
-Sentiment: 2.0
-sacrificed space
-Sentiment: 3.0
-love vehicle
-Sentiment: 3.0
-comfortable ride
-Sentiment: 4.0

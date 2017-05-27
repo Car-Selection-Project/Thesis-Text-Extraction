@@ -1,4 +1,0 @@
-major issue
-Sentiment: 3.0
-interior layout
-Sentiment: 3.0

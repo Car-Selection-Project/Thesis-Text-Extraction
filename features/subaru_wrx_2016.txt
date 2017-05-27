@@ -1,4 +1,0 @@
-great ride
-Sentiment: 4.0
-similar design
-Sentiment: 3.0

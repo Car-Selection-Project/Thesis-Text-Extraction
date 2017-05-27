@@ -1,2 +1,0 @@
-good mpg
-Sentiment: 4.0

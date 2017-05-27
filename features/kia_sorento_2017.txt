@@ -1,8 +1,0 @@
-huge trunk
-Sentiment: 3.0
-adaptive control
-Sentiment: 3.0
-excellent quality
-Sentiment: 5.0
-direct engine
-Sentiment: 3.0

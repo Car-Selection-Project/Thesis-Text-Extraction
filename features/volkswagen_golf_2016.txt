@@ -1,6 +1,0 @@
-smooth engine
-Sentiment: 3.0
-nice feature
-Sentiment: 4.0
-low noise
-Sentiment: 3.0

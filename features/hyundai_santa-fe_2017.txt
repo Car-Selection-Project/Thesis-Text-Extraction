@@ -1,4 +1,0 @@
-real issue
-Sentiment: 3.0
-driven model
-Sentiment: 4.0

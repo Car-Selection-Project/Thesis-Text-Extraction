@@ -1,8 +1,0 @@
-decent mileage
-Sentiment: 4.0
-good acceleration
-Sentiment: 4.0
-not good fuel
-Sentiment: 2.0
-limited space
-Sentiment: 3.0

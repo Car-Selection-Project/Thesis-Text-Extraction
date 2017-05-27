@@ -1,4 +1,0 @@
-phenominal mileage
-Sentiment: 3.0
-poor visibility
-Sentiment: 2.0

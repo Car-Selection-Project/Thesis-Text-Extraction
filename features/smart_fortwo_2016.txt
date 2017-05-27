@@ -1,2 +1,0 @@
-great system.overall
-Sentiment: 4.0

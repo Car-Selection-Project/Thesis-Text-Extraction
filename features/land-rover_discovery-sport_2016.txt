@@ -1,8 +1,0 @@
-luxurious interior
-Sentiment: 3.0
-sterile interior
-Sentiment: 3.0
-sparse interior
-Sentiment: 3.0
-comfortable wheel
-Sentiment: 3.0

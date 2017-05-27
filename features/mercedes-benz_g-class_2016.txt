@@ -1,6 +1,0 @@
-amazing performance
-Sentiment: 5.0
-rear room
-Sentiment: 3.0
-excellent comfort
-Sentiment: 4.0

@@ -1,2 +1,0 @@
-great fun
-Sentiment: 4.0

@@ -1,8 +1,0 @@
-powerful engine
-Sentiment: 4.0
-smooth ride
-Sentiment: 3.0
-silky ride
-Sentiment: 3.0
-driving reincarnation
-Sentiment: 3.0

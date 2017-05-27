@@ -1,4 +1,0 @@
-quiet ride
-Sentiment: 4.0
-comfortable ride
-Sentiment: 4.0

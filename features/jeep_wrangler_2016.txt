@@ -1,6 +1,0 @@
-solid quality
-Sentiment: 4.0
-higher speed
-Sentiment: 3.0
-rough ride
-Sentiment: 3.0

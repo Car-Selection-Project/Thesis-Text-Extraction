@@ -1,8 +1,0 @@
-interior leather/cloth
-Sentiment: 3.0
-added engine
-Sentiment: 4.0
-gave power
-Sentiment: 4.0
-great kia
-Sentiment: 4.0

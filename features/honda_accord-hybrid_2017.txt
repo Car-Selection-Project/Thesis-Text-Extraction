@@ -1,4 +1,0 @@
-consuming gas
-Sentiment: 3.0
-latest model
-Sentiment: 3.0

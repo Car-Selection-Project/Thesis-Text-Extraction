@@ -1,6 +1,0 @@
-superb quality
-Sentiment: 4.0
-lackluster engine
-Sentiment: 2.0
-astounding interior
-Sentiment: 4.0

@@ -1,8 +1,0 @@
-great combination
-Sentiment: 4.0
-adaptive control
-Sentiment: 3.0
-mixed driving
-Sentiment: 3.0
-additional feature
-Sentiment: 3.0

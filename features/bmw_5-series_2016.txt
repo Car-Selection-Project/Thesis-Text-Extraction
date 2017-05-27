@@ -1,8 +1,0 @@
-good car
-Sentiment: 4.0
-cut feature
-Sentiment: 3.0
-good car
-Sentiment: 4.0
-cut feature
-Sentiment: 3.0

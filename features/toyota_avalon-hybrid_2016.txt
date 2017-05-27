@@ -1,8 +1,0 @@
-great quality
-Sentiment: 4.0
-top quality
-Sentiment: 4.0
-dynamic control
-Sentiment: 4.0
-long time
-Sentiment: 3.0

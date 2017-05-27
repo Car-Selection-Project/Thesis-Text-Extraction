@@ -1,6 +1,0 @@
-interior room
-Sentiment: 3.0
-quiet interior
-Sentiment: 3.0
-combined driving
-Sentiment: 3.0

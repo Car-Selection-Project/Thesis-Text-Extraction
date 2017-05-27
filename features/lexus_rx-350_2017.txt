@@ -1,6 +1,0 @@
-notice comfort
-Sentiment: 4.0
-notice safety
-Sentiment: 3.0
-exit vehicle
-Sentiment: 3.0

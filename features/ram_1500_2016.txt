@@ -1,4 +1,0 @@
-warming vehicle
-Sentiment: 3.0
-not buy vehicle
-Sentiment: 3.0

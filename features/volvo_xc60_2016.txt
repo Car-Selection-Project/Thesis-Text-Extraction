@@ -1,4 +1,0 @@
-majic gas
-Sentiment: 3.0
-blue gas
-Sentiment: 3.0

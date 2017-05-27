@@ -1,6 +1,0 @@
-lower vehicle
-Sentiment: 3.0
-smaller vehicle
-Sentiment: 3.0
-great sound
-Sentiment: 4.0

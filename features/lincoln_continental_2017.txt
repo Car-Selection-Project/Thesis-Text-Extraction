@@ -1,6 +1,0 @@
-great vehicle
-Sentiment: 4.0
-genius.the seat
-Sentiment: 3.0
-unbelievable comfort
-Sentiment: 4.0

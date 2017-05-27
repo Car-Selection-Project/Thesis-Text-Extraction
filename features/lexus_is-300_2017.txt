@@ -1,2 +1,0 @@
-unusual noise
-Sentiment: 3.0

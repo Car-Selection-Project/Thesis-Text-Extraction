@@ -1,2 +1,4 @@
 nice comfort
 Sentiment: 4.0
+nice comfort
+Sentiment: 4.0

@@ -13,13 +13,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import javax.swing.SwingUtilities;
-import javax.swing.SwingWorker;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class SimpleRunner extends SwingWorker<Object, Object> {
+public class SimpleRunner {
 
 	Map<String, List<String>> map;
 	Extract extract;
@@ -31,7 +28,7 @@ public class SimpleRunner extends SwingWorker<Object, Object> {
 
 			// Read Reviews
 			Object obj = parser.parse(new FileReader(
-					"Reviews - full.json"));
+					"Reviews - medium.json"));
 
 			// Create JSON object
 			JSONObject jsonObject = (JSONObject) obj;
@@ -39,11 +36,8 @@ public class SimpleRunner extends SwingWorker<Object, Object> {
 			// Create a new map
 			map = new HashMap<String, List<String>>();
 
-			int progress = 0;
 			// Loop through the JSON and place reviews from the same car under one key
 			for(Iterator<?> iterator = jsonObject.keySet().iterator(); iterator.hasNext();) {
-				progress++;
-		//		GUI.setProgress(progress, jsonObject.keySet().size());
 				String key = (String) iterator.next();
 				String value = (String) jsonObject.get(key);
 
@@ -61,13 +55,7 @@ public class SimpleRunner extends SwingWorker<Object, Object> {
 			return new ArrayList<String>(map.keySet());
 		}
 	}
-	int progress = 0;
-	int mapsize;
-	public Void doInBackground() {
-		progress++;
-		GUI.setProgress(progress, mapsize); 
-		return null;
-	}
+
 	@SuppressWarnings("rawtypes")
 	public List<Pattern> run(String key) {
 		List<String> patternlist = new ArrayList<String>();
@@ -77,6 +65,7 @@ public class SimpleRunner extends SwingWorker<Object, Object> {
 		Map<String,Integer> wordMap = new HashMap<String, Integer>();
 		Iterator<?> it = map.entrySet().iterator();
 
+		// If a single car is selected
 		if(!key.equals("all")) {
 			// Extract patterns
 			patterns = extract.run(map.get(key).toString());
@@ -84,16 +73,12 @@ public class SimpleRunner extends SwingWorker<Object, Object> {
 		}
 
 		else {
-			
-			mapsize = map.size();
-			
+			// For all cars
 			try{
 				while (it.hasNext()) {
 					Map.Entry pair = (Map.Entry)it.next();
 					
-					doInBackground();
-					
-					
+					// Prepare to write to file
 					System.out.println(pair.getKey() + " = " + pair.getValue());
 					File file = new File("features/" + pair.getKey().toString() + ".txt");
 					file.createNewFile();

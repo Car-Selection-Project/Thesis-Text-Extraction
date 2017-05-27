@@ -24,6 +24,7 @@ mileage
 miles
 mirror
 model
+nice
 noise
 oil
 performance
@@ -41,6 +42,7 @@ screen
 seat
 seats
 sluggish
+smooth
 sound system
 space
 speed

@@ -4,3 +4,9 @@ urban driving
 Sentiment: 3.0
 urban driving
 Sentiment: 3.0
+urban driving
+Sentiment: 3.0
+fine acceleration
+Sentiment: 4.0
+urban driving
+Sentiment: 3.0

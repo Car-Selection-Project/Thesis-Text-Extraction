@@ -4,3 +4,11 @@ smoother ride
 Sentiment: 3.0
 nice quality
 Sentiment: 4.0
+nice car
+Sentiment: 4.0
+great car
+Sentiment: 4.0
+smoother ride
+Sentiment: 3.0
+nice quality
+Sentiment: 4.0

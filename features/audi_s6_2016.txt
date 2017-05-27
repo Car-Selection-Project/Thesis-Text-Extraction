@@ -1,2 +1,4 @@
 test drive
 Sentiment: 3.0
+test drive
+Sentiment: 3.0

@@ -1,2 +1,4 @@
 sumptuous interior
 Sentiment: 4.0
+sumptuous interior
+Sentiment: 4.0

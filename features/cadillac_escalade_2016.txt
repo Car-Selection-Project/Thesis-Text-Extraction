@@ -4,3 +4,9 @@ short vehicle
 Sentiment: 3.0
 apative control
 Sentiment: 3.0
+good bargain
+Sentiment: 4.0
+short vehicle
+Sentiment: 3.0
+apative control
+Sentiment: 3.0

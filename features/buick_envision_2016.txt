@@ -2,3 +2,7 @@ great warranty
 Sentiment: 4.0
 clear visibility
 Sentiment: 3.0
+great warranty
+Sentiment: 4.0
+clear visibility
+Sentiment: 3.0

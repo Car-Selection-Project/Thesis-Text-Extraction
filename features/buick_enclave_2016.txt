@@ -2,3 +2,9 @@ quietest vehicle
 Sentiment: 3.0
 front drive
 Sentiment: 3.0
+quietest vehicle
+Sentiment: 3.0
+front drive
+Sentiment: 3.0
+acceptable acceleration
+Sentiment: 3.0

@@ -1,2 +1,12 @@
 great technology
 Sentiment: 4.0
+great technology
+Sentiment: 4.0
+great technology
+Sentiment: 4.0
+great technology
+Sentiment: 4.0
+great technology
+Sentiment: 4.0
+great technology
+Sentiment: 4.0

@@ -1,2 +1,6 @@
 good quality
 Sentiment: 4.0
+smooth bmw
+Sentiment: 3.0
+good quality
+Sentiment: 4.0

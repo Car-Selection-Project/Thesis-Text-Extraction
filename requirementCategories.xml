@@ -38,15 +38,15 @@
 		<feature>space</feature>
 	</Category>
 	<Category name="Quality">
-		<feature>experience</features>
-		<feature>issues</features>
-		<feature>mileage</features>
-		<feature>miles</features>
-		<feature>performance</features>
-		<feature>quality</features>
-		<feature>safety</features>
-		<feature>technology</features>
-		<feature>visibility</features>
+		<feature>experience</feature>
+		<feature>issues</feature>
+		<feature>mileage</feature>
+		<feature>miles</feature>
+		<feature>performance</feature>
+		<feature>quality</feature>
+		<feature>safety</feature>
+		<feature>technology</feature>
+		<feature>visibility</feature>
 	</Category>
 	<Category name="Value">
 		<feature>fuel</feature>
@@ -67,13 +67,5 @@
 		<feature>ride</feature>
 		<feature>system</feature>
 		<feature>vehicle</feature>
-	</Category>
-	<Category name="Adjectives">
-		<feature>bad</feature>
-		<feature>good</feature>
-		<feature>great</feature>
-		<feature>love</feature>
-		<feature>poor</feature>
-		<feature>sluggish</feature>
 	</Category>
 </Categories>

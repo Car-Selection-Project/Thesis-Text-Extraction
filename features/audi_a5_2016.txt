@@ -2,3 +2,9 @@ sound system
 Sentiment: 3.0
 sound quality
 Sentiment: 3.0
+superb acceleration
+Sentiment: 4.0
+sound system
+Sentiment: 3.0
+sound quality
+Sentiment: 3.0

@@ -14,7 +14,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
@@ -35,7 +34,6 @@ public class GUI extends JFrame {
 	private JPanel controlPanel;
 	private static SimpleRunner runner;
 	private JTextArea text;
-	private static JProgressBar progress;
 
 	public static void main(String[] args) {
 		runner = new SimpleRunner();
@@ -89,20 +87,6 @@ public class GUI extends JFrame {
 		c.gridx = 0;
 		c.gridy = 2;
 		Jframe.add(controlPanel, c);
-		
-		progress = new JProgressBar(0, 100);
-		progress.setVisible(false);
-		progress.setStringPainted(true);
-		c.fill = GridBagConstraints.CENTER;
-		c.anchor = GridBagConstraints.PAGE_START;
-		c.ipady = 10;
-		c.ipadx = 50;
-		c.weightx = 0.0;
-		c.weighty = 1.0;
-		c.gridwidth = 3;
-		c.gridx = 0;
-		c.gridy = 4;
-		Jframe.add(progress, c);
 
 		text = new JTextArea("Feature		Sentiment \n");
 		text.setAutoscrolls(true);
@@ -145,14 +129,6 @@ public class GUI extends JFrame {
 		Jframe.setLocation(dim.width/2-Jframe.getSize().width/2, dim.height/2-Jframe.getSize().height/2);
 		Jframe.setVisible(true);
 	}
-	
-	public static void setProgress(int progress, int total) {
-			//System.out.println(progress + " " + total);
-			//progress.setVisible(true);
-			//progress.set;
-			//progress.revalidate();
-			//progress.repaint();
-	}
 
 	private class ButtonClickListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -161,6 +137,8 @@ public class GUI extends JFrame {
 				ArrayList<Pattern> patterns = (ArrayList<Pattern>) runner
 						.run(unTrimKey((String) combobox.getSelectedItem()));
 				
+				// Categorise logic
+				new Categories(patterns);
 				
 				text.removeAll();
 				text.setText("Feature		Sentiment \n");
@@ -170,7 +148,8 @@ public class GUI extends JFrame {
 					else 
 						text.setText(text.getText() + pattern.toAspect() + "	" + pattern.getSentiment() + "\n");
 				}
-				text.setText(text.getText() + "Overall		" + runner.overallSentiment);
+				double overallSentiment = calculateOverallSentiment(patterns);
+				text.setText(text.getText() + "Overall" + "		" + overallSentiment + "\n");
 				text.revalidate();
 				text.repaint();
 			}
@@ -194,5 +173,16 @@ public class GUI extends JFrame {
 		key = key.replace(" ", "_");
 		key = key.substring(0, 1).toLowerCase() + key.substring(1);
 		return key;
+	}
+	
+	private double calculateOverallSentiment(List<Pattern> patterns) {
+		double sentiment = 0;
+		int count = 1;
+		for (Pattern pattern : patterns) {
+			sentiment += pattern.getSentiment();
+			count++;
+		}
+		sentiment = sentiment / count;
+		return sentiment;
 	}
 }

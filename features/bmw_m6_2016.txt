@@ -1,2 +1,4 @@
 powerful car
 Sentiment: 4.0
+powerful car
+Sentiment: 4.0

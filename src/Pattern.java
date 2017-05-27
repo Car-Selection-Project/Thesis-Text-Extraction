@@ -10,6 +10,7 @@ public class Pattern {
 	public double sentimentCount;
 	public Pattern mother;
 	public Pattern father;
+	public String category;
 
 	public Pattern(String head, String modifier, Relation relation) {
 

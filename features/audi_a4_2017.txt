@@ -1,0 +1,6 @@
+interior cabinet
+Sentiment: 3.0
+previous model
+Sentiment: 3.0
+good luck
+Sentiment: 4.0

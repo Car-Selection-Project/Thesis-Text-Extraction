@@ -1,0 +1,2 @@
+clear system
+Sentiment: 3.0

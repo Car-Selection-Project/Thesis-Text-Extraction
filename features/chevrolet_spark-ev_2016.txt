@@ -1,0 +1,2 @@
+great deal
+Sentiment: 4.0

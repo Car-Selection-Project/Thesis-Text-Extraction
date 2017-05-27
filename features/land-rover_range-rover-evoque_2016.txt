@@ -1,0 +1,4 @@
+strong engine
+Sentiment: 4.0
+nice interior
+Sentiment: 4.0

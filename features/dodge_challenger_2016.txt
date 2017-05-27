@@ -1,0 +1,4 @@
+clean design
+Sentiment: 3.0
+spacious interior
+Sentiment: 3.0

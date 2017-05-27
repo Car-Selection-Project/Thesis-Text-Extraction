@@ -1,0 +1,4 @@
+great layout
+Sentiment: 4.0
+interior layout
+Sentiment: 3.0

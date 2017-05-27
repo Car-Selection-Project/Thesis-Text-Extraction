@@ -1,0 +1,4 @@
+cramped space
+Sentiment: 3.0
+good car
+Sentiment: 4.0

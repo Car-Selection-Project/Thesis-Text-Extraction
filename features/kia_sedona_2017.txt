@@ -1,0 +1,6 @@
+quiet vehicle
+Sentiment: 3.0
+large vehicle
+Sentiment: 3.0
+great leather
+Sentiment: 4.0

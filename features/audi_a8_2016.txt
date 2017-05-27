@@ -1,0 +1,6 @@
+quiet interior
+Sentiment: 3.0
+long drive
+Sentiment: 3.0
+great comfort
+Sentiment: 4.0

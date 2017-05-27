@@ -1,0 +1,4 @@
+net price
+Sentiment: 4.0
+n't considering price
+Sentiment: 3.0

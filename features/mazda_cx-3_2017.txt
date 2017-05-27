@@ -1,0 +1,16 @@
+small vehicle
+Sentiment: 3.0
+great handling
+Sentiment: 4.0
+great acceleration
+Sentiment: 4.0
+great mpg
+Sentiment: 4.0
+interior space
+Sentiment: 3.0
+intuitive screen
+Sentiment: 3.0
+snazzy interior
+Sentiment: 3.0
+walk-out price
+Sentiment: 4.0

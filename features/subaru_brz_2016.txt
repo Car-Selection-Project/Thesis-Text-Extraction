@@ -1,0 +1,4 @@
+great color
+Sentiment: 4.0
+great adjustment
+Sentiment: 4.0

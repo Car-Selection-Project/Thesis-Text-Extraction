@@ -1,0 +1,16 @@
+competent vehicle
+Sentiment: 4.0
+excellent visibility
+Sentiment: 4.0
+right-hand drive
+Sentiment: 3.0
+smaller engine
+Sentiment: 3.0
+adequate performance
+Sentiment: 3.0
+good mileage
+Sentiment: 4.0
+smaller vehicle
+Sentiment: 3.0
+rear visibility
+Sentiment: 3.0

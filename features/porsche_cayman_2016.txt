@@ -1,0 +1,8 @@
+manual transmission
+Sentiment: 3.0
+automatic transmission
+Sentiment: 3.0
+namby-pamby transmission
+Sentiment: 3.0
+catches time
+Sentiment: 4.0

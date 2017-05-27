@@ -1,0 +1,6 @@
+gorgeous vehicle
+Sentiment: 4.0
+adequate trunk
+Sentiment: 3.0
+scant space
+Sentiment: 3.0

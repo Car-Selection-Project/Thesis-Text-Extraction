@@ -1,0 +1,8 @@
+main issue
+Sentiment: 3.0
+stop speed
+Sentiment: 3.0
+high speed
+Sentiment: 3.0
+good experience
+Sentiment: 4.0

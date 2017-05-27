@@ -1,0 +1,6 @@
+superb comfort
+Sentiment: 4.0
+drive car
+Sentiment: 3.0
+great america
+Sentiment: 4.0

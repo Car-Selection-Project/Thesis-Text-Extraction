@@ -1,0 +1,12 @@
+good acceleration
+Sentiment: 4.0
+back seat
+Sentiment: 3.0
+excellent space
+Sentiment: 4.0
+steering wheel
+Sentiment: 3.0
+back seat
+Sentiment: 3.0
+mention system
+Sentiment: 3.0

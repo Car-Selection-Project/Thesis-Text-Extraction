@@ -1,0 +1,8 @@
+actual price
+Sentiment: 4.0
+active noise
+Sentiment: 3.0
+adaptive control
+Sentiment: 3.0
+due trunk
+Sentiment: 3.0

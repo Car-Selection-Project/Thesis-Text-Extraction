@@ -1,0 +1,12 @@
+love engine
+Sentiment: 3.0
+peppy engine
+Sentiment: 3.0
+low noise
+Sentiment: 3.0
+great screen
+Sentiment: 4.0
+disables screen
+Sentiment: 3.0
+not enough system
+Sentiment: 3.0

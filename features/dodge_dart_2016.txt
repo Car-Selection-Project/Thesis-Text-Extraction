@@ -1,0 +1,4 @@
+interior styling
+Sentiment: 3.0
+good mileage
+Sentiment: 4.0

@@ -1,0 +1,10 @@
+folding seat
+Sentiment: 3.0
+rear seat
+Sentiment: 3.0
+good economy
+Sentiment: 4.0
+rear space
+Sentiment: 3.0
+larger space
+Sentiment: 3.0

@@ -1,0 +1,4 @@
+lacking power
+Sentiment: 2.0
+not great mileage
+Sentiment: 2.0

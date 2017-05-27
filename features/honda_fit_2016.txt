@@ -1,0 +1,12 @@
+rear comfort
+Sentiment: 4.0
+great job
+Sentiment: 4.0
+evident noise
+Sentiment: 3.0
+good job
+Sentiment: 4.0
+firm ride
+Sentiment: 3.0
+plusher ride
+Sentiment: 3.0

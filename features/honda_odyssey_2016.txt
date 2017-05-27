@@ -1,0 +1,4 @@
+jittery ride
+Sentiment: 3.0
+harsh ride
+Sentiment: 2.0

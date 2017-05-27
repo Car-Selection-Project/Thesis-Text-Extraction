@@ -1,0 +1,6 @@
+comfortable ride
+Sentiment: 4.0
+upgraded system
+Sentiment: 3.0
+sound system
+Sentiment: 3.0

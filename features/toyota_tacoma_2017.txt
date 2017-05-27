@@ -1,0 +1,8 @@
+great utility
+Sentiment: 4.0
+improve mileage
+Sentiment: 3.0
+horrible system
+Sentiment: 2.0
+built-in system
+Sentiment: 3.0

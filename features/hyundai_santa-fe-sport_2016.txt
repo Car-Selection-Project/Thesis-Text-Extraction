@@ -1,0 +1,4 @@
+average fuel
+Sentiment: 3.0
+instantaneous fuel
+Sentiment: 3.0

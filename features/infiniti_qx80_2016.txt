@@ -1,0 +1,4 @@
+horrible mileage
+Sentiment: 2.0
+previous vehicle
+Sentiment: 3.0

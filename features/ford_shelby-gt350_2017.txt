@@ -1,0 +1,6 @@
+understand power
+Sentiment: 4.0
+feel power
+Sentiment: 4.0
+raw power
+Sentiment: 4.0

@@ -1,0 +1,4 @@
+great feature
+Sentiment: 4.0
+great car
+Sentiment: 4.0

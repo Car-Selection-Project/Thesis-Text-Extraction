@@ -1,0 +1,6 @@
+parallel feature
+Sentiment: 3.0
+great steering
+Sentiment: 4.0
+outstanding system
+Sentiment: 4.0

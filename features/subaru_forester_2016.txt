@@ -1,0 +1,6 @@
+nice camera
+Sentiment: 3.0
+responsive mileage
+Sentiment: 3.0
+great mileage
+Sentiment: 4.0

@@ -1,0 +1,6 @@
+big space
+Sentiment: 3.0
+save gas
+Sentiment: 3.0
+due gas
+Sentiment: 3.0

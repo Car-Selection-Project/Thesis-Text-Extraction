@@ -1,0 +1,8 @@
+good mpg
+Sentiment: 4.0
+full time
+Sentiment: 3.0
+correct time
+Sentiment: 3.0
+not tell time
+Sentiment: 2.0

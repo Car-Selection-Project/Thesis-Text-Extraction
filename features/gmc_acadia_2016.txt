@@ -1,0 +1,12 @@
+favorite vehicle
+Sentiment: 4.0
+solid vehicle
+Sentiment: 4.0
+luxurious vehicle
+Sentiment: 3.0
+adequate engine
+Sentiment: 3.0
+generous space
+Sentiment: 4.0
+not competitive time
+Sentiment: 3.0

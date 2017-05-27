@@ -1,0 +1,16 @@
+great handling
+Sentiment: 4.0
+300hp engine
+Sentiment: 3.0
+active control
+Sentiment: 3.0
+rear camera
+Sentiment: 3.0
+good resolution
+Sentiment: 3.0
+nice feature
+Sentiment: 4.0
+decent quality
+Sentiment: 4.0
+noticeable noise
+Sentiment: 3.0

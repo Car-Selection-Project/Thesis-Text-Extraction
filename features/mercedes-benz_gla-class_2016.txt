@@ -1,0 +1,2 @@
+small trunk
+Sentiment: 3.0

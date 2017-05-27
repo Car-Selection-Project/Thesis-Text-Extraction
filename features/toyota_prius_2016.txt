@@ -1,0 +1,2 @@
+gray interior
+Sentiment: 3.0

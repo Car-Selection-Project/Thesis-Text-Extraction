@@ -1,0 +1,10 @@
+excellent ride
+Sentiment: 5.0
+nicer ride
+Sentiment: 3.0
+automatic control
+Sentiment: 3.0
+wonderful control
+Sentiment: 4.0
+great app
+Sentiment: 4.0

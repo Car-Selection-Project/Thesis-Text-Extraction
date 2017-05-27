@@ -1,0 +1,4 @@
+smooth ride
+Sentiment: 3.0
+comfortable seat
+Sentiment: 3.0

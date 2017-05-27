@@ -1,0 +1,8 @@
+wonderful driving
+Sentiment: 4.0
+exciting driving
+Sentiment: 4.0
+driving experience
+Sentiment: 3.0
+great experience
+Sentiment: 4.0

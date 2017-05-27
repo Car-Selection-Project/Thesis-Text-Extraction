@@ -1,0 +1,12 @@
+distronic control
+Sentiment: 3.0
+wonderful control
+Sentiment: 4.0
+intuitive system
+Sentiment: 3.0
+great navigation
+Sentiment: 4.0
+adaptive control
+Sentiment: 3.0
+great vehicle
+Sentiment: 4.0

@@ -1,0 +1,12 @@
+smooth ride
+Sentiment: 3.0
+controlled ride
+Sentiment: 3.0
+outstanding system
+Sentiment: 4.0
+net price
+Sentiment: 4.0
+bigger interior
+Sentiment: 3.0
+electronic driving
+Sentiment: 3.0

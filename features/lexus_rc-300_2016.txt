@@ -1,0 +1,14 @@
+drive rc
+Sentiment: 3.0
+elegant interior
+Sentiment: 4.0
+soft ride
+Sentiment: 3.0
+easy system
+Sentiment: 3.0
+quiet engine
+Sentiment: 4.0
+variable transmission
+Sentiment: 3.0
+adaptive transmission
+Sentiment: 3.0

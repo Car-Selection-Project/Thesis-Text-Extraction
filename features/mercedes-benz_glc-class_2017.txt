@@ -1,0 +1,8 @@
+beautiful interior
+Sentiment: 4.0
+impressive quality
+Sentiment: 4.0
+great job
+Sentiment: 4.0
+impressive performance
+Sentiment: 5.0

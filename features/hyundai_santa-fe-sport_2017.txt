@@ -1,0 +1,6 @@
+larger screen
+Sentiment: 3.0
+good department
+Sentiment: 4.0
+good quality
+Sentiment: 4.0

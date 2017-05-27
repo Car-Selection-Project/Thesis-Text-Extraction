@@ -1,0 +1,2 @@
+buy vehicle
+Sentiment: 3.0

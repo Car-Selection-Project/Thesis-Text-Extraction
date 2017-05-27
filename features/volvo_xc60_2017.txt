@@ -1,0 +1,12 @@
+good suv
+Sentiment: 4.0
+regular gas
+Sentiment: 3.0
+good mpg
+Sentiment: 4.0
+good road
+Sentiment: 4.0
+small screen
+Sentiment: 3.0
+noisy drive
+Sentiment: 3.0

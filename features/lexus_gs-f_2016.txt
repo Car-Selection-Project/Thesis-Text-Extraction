@@ -1,0 +1,4 @@
+upper power
+Sentiment: 4.0
+awesome sound
+Sentiment: 3.0

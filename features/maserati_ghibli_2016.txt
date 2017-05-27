@@ -1,0 +1,8 @@
+drive sedan
+Sentiment: 3.0
+good mileage
+Sentiment: 4.0
+italian design
+Sentiment: 3.0
+comfortable seat
+Sentiment: 3.0

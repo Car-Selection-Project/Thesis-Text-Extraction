@@ -1,0 +1,6 @@
+great car
+Sentiment: 4.0
+great mileage
+Sentiment: 4.0
+mixed driving
+Sentiment: 3.0

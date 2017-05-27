@@ -1,0 +1,2 @@
+red interior
+Sentiment: 3.0

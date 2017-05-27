@@ -1,0 +1,14 @@
+good car
+Sentiment: 4.0
+terrible experience
+Sentiment: 2.0
+great car
+Sentiment: 4.0
+outstanding sound
+Sentiment: 4.0
+sound system
+Sentiment: 3.0
+excellent screen
+Sentiment: 5.0
+great suv
+Sentiment: 4.0

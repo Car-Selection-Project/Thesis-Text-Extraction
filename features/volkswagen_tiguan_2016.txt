@@ -1,0 +1,6 @@
+superior experience
+Sentiment: 4.0
+average visibility
+Sentiment: 3.0
+bigger vehicle
+Sentiment: 3.0

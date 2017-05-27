@@ -1,0 +1,79 @@
+<Categories>
+	<Category name="Performance">
+		<feature>acceleration</feature>
+		<feature>control</feature>
+		<feature>handle</feature>
+		<feature>miles</feature>
+		<feature>performance</feature>
+		<feature>power</feature>
+		<feature>powerful</feature>
+		<feature>speed</feature>
+		<feature>transmission</feature>
+	</Category>
+	<Category name="Design">
+		<feature>design</feature>
+		<feature>interior</feature>
+		<feature>look</feature>
+	</Category>
+	<Category name="Parts">
+		<feature>camera</feature>
+		<feature>engine</feature>
+		<feature>hood</feature>
+		<feature>mirror</feature>
+		<feature>radiator</feature>
+		<feature>rim</feature>
+		<feature>screen</feature>
+		<feature>seat</feature>
+		<feature>seats</feature>
+		<feature>sound system</feature>
+		<feature>trunk</feature>
+		<feature>wheel</feature>
+		<feature>wheels</feature>
+	</Category>
+	<Category name="Feeling">
+		<feature>comfort</feature>
+		<feature>experience</feature>
+		<feature>noise</feature>
+		<feature>room</feature>
+		<feature>space</feature>
+	</Category>
+	<Category name="Quality">
+		<feature>experience</features>
+		<feature>issues</features>
+		<feature>mileage</features>
+		<feature>miles</features>
+		<feature>performance</features>
+		<feature>quality</features>
+		<feature>safety</features>
+		<feature>technology</features>
+		<feature>visibility</features>
+	</Category>
+	<Category name="Value">
+		<feature>fuel</feature>
+		<feature>gas</feature>
+		<feature>issue</feature>
+		<feature>issues</feature>
+		<feature>mileage</feature>
+		<feature>miles</feature>
+		<feature>oil</feature>
+		<feature>price</feature>
+		<feature>value</feature>
+	</Category>
+	<Category name="Overall">
+		<feature>drive</feature>
+		<feature>driving</feature>
+		<feature>feature</feature>
+		<feature>model</feature>
+		<feature>ride</feature>
+		<feature>system</feature>
+		<feature>vehicle</feature>
+	</Category>
+	<Category name="Adjectives">
+		<feature>bad</feature>
+		<feature>good</feature>
+		<feature>great</feature>
+		<feature>love</feature>
+		<feature>poor</feature>
+		<feature>sluggish</feature>
+	</Category>
+</Categories>

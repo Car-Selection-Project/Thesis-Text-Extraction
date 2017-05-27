@@ -1,0 +1,8 @@
+great quest
+Sentiment: 3.0
+front design
+Sentiment: 3.0
+small room
+Sentiment: 3.0
+3rd seat
+Sentiment: 3.0

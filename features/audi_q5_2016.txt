@@ -1,0 +1,16 @@
+good support
+Sentiment: 4.0
+sound system
+Sentiment: 3.0
+good quality
+Sentiment: 4.0
+sound quality
+Sentiment: 3.0
+takes time
+Sentiment: 3.0
+logical system
+Sentiment: 3.0
+fills interior
+Sentiment: 3.0
+confident driving
+Sentiment: 4.0

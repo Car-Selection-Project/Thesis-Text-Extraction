@@ -1,0 +1,6 @@
+competitive driving
+Sentiment: 3.0
+great interior
+Sentiment: 4.0
+not had vehicle
+Sentiment: 3.0

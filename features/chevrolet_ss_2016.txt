@@ -1,0 +1,6 @@
+great luck
+Sentiment: 4.0
+awesome power
+Sentiment: 4.0
+n't like price
+Sentiment: 2.0

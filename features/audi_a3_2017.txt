@@ -1,0 +1,2 @@
+good thing
+Sentiment: 4.0

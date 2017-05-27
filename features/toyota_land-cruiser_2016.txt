@@ -1,0 +1,12 @@
+long drive
+Sentiment: 3.0
+comfortable drive
+Sentiment: 3.0
+sensitive control
+Sentiment: 4.0
+adaptive control
+Sentiment: 3.0
+love tailgate
+Sentiment: 3.0
+reliable vehicle
+Sentiment: 4.0

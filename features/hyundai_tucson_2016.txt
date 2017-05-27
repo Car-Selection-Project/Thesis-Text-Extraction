@@ -1,0 +1,8 @@
+great mileage
+Sentiment: 4.0
+good vehicle
+Sentiment: 4.0
+put vehicle
+Sentiment: 3.0
+drive sport
+Sentiment: 3.0

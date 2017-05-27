@@ -1,0 +1,6 @@
+sound system
+Sentiment: 3.0
+excellent quality
+Sentiment: 5.0
+nice system
+Sentiment: 4.0

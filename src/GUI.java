@@ -139,17 +139,26 @@ public class GUI extends JFrame {
 				
 				// Categorise logic
 				new Categories(patterns);
+				ArrayList<List<String>> arrayCategories = Categories.groupCategories(patterns);
 				
 				text.removeAll();
-				text.setText("Feature		Sentiment \n");
-				for (Pattern pattern : patterns) {
+				text.setText("Category		Sentiment \n");
+				for (List<String> category : arrayCategories) {
+					double categorySentiment = 0;
+					for(int i=1;i<category.size();i++) {
+						categorySentiment += (Double.parseDouble(category.get(i)));
+					}
+					text.setText(text.getText() + category.get(0) + "		" + categorySentiment/(category.size()-1) + "\n");
+				}
+				//text.setText("Feature		Sentiment \n");
+				/*for (Pattern pattern : patterns) {
 					if (pattern.toAspect().length() <= 14)
 						text.setText(text.getText() + pattern.toAspect() + "		" + pattern.getSentiment() + "\n");
 					else 
 						text.setText(text.getText() + pattern.toAspect() + "	" + pattern.getSentiment() + "\n");
 				}
 				double overallSentiment = calculateOverallSentiment(patterns);
-				text.setText(text.getText() + "Overall" + "		" + overallSentiment + "\n");
+				text.setText(text.getText() + "Overall" + "		" + overallSentiment + "\n");*/
 				text.revalidate();
 				text.repaint();
 			}
@@ -177,7 +186,7 @@ public class GUI extends JFrame {
 	
 	private double calculateOverallSentiment(List<Pattern> patterns) {
 		double sentiment = 0;
-		int count = 1;
+		int count = 0;
 		for (Pattern pattern : patterns) {
 			sentiment += pattern.getSentiment();
 			count++;

@@ -169,21 +169,4 @@ public class SimpleRunner {
 						LinkedHashMap::new
 						));
 	}
-	/*public static String checkRequirements(String pattern, List<String>featureList) {
- 		try {
-            featureList = LoadrequirementWords();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
- 		String[] patternSplit = pattern.split("\\s+");
- 		for(String word : patternSplit) {
-	 		if(featureList.contains(word.toLowerCase())) {
-	 			System.out.println(pattern);
-	 			return pattern;
-	 		}
- 		}
- 		return "";
- 	}*/
-
 }

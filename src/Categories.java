@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Categories {
-	
+
 	List<Pattern> patterns;
 	ArrayList<List<String>> arrayCategories = new ArrayList<List<String>>();
-	
+
 	public Categories(List<Pattern> patterns) {
 		this.patterns = patterns;
 		makeCategories();
@@ -40,11 +40,11 @@ public class Categories {
 
 					List<String> category = new ArrayList<String>();
 					category.add(eElement.getAttribute("name"));
-					
+
 					for (int i=0; eElement.getElementsByTagName("feature").getLength() > i; i++) {
 						category.add(eElement.getElementsByTagName("feature").item(i).getTextContent());
 					};
-					
+
 					arrayCategories.add(category);
 				}
 			}
@@ -54,7 +54,7 @@ public class Categories {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void sortCategories() {
 		for(Pattern pattern : patterns) {	
 			for(List<String> category : arrayCategories) {
@@ -64,6 +64,49 @@ public class Categories {
 					}
 				}
 			}
+			if(pattern.category == null) 
+				pattern.category = "Other";
 		}
+	}
+
+	public static ArrayList<List<String>> groupCategories(List<Pattern> patterns) {
+		ArrayList<List<String>> categoriesArray = new ArrayList<List<String>>();
+		// Clear category lists
+
+		int preventException = 0;
+		// Create category lists from patterns
+		for (Pattern pattern : patterns) {
+			int i = 0;
+			boolean found = false;
+			do {
+				if (preventException==0) { // first pattern to get added
+					List<String> category = new ArrayList<String>();
+					category.add(pattern.category);	
+					categoriesArray.add(category);
+					category.add(Double.toString(pattern.getSentiment()));
+					found=true;
+					break;
+				}
+				else { // category already added
+					List<String> match = categoriesArray.get(i);
+					if(match.get(0) == pattern.category) {
+						match.add(Double.toString(pattern.getSentiment()));
+						found=true;
+						break;
+					}
+				}
+				i++;
+			}
+			while (i < categoriesArray.size());
+			if (!found) { // add new category
+				List<String> category = new ArrayList<String>();
+				category.add(pattern.category);
+				category.add(Double.toString(pattern.getSentiment()));
+				categoriesArray.add(category);
+			}
+			preventException++;
+		}
+		System.out.println(categoriesArray);
+		return categoriesArray;
 	}
 }

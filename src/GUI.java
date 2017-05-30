@@ -134,10 +134,27 @@ public class GUI extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();
 			if (command.equals("Run")) {
-				ArrayList<Pattern> patterns = (ArrayList<Pattern>) runner
+				ArrayList<Pattern> patterns = new ArrayList<Pattern>();
+				text.removeAll();
+				text.setText("Category		Sentiment \n");
+				if (combobox.getSelectedItem().equals("All")){
+					for (int i=1; i<combobox.getItemCount(); i++) {
+						patterns = (ArrayList<Pattern>) runner
+								.run(unTrimKey((String) combobox.getItemAt(i)));
+						
+						if (patterns.size() != 0) {
+							text.setText(text.getText() + (String)combobox.getItemAt(i) + "\n");
+							runText(patterns);
+						}
+					}
+				}
+				else {
+					patterns = (ArrayList<Pattern>) runner
 						.run(unTrimKey((String) combobox.getSelectedItem()));
+					runText(patterns);
+				}
 				
-				// Categorise logic
+				/*// Categorise logic
 				new Categories(patterns);
 				ArrayList<List<String>> arrayCategories = Categories.groupCategories(patterns);
 				
@@ -149,7 +166,7 @@ public class GUI extends JFrame {
 						categorySentiment += (Double.parseDouble(category.get(i)));
 					}
 					text.setText(text.getText() + category.get(0) + "		" + categorySentiment/(category.size()-1) + "\n");
-				}
+				}*/
 				//text.setText("Feature		Sentiment \n");
 				/*for (Pattern pattern : patterns) {
 					if (pattern.toAspect().length() <= 14)
@@ -165,6 +182,22 @@ public class GUI extends JFrame {
 		}
 	}
 
+	private void runText(List<Pattern> patterns) {
+		new Categories(patterns);
+		ArrayList<List<String>> arrayCategories = Categories.groupCategories(patterns);
+		
+		for (List<String> category : arrayCategories) {
+			double categorySentiment = 0;
+			for(int i=1;i<category.size();i++) {
+				categorySentiment += (Double.parseDouble(category.get(i)));
+			}
+			text.setText(text.getText() + category.get(0) + "		" + categorySentiment/(category.size()-1) + "\n");
+		}
+		double overallSentiment = calculateOverallSentiment(patterns);
+		text.setText(text.getText() + "Overall" + "		" + overallSentiment + "\n\n");
+		text.revalidate();
+		text.repaint();
+	}
 	private List<String> trimKeys(List<String> keys) {
 		List<String> newKeys = new ArrayList<String>();
 		for (String key : keys) {

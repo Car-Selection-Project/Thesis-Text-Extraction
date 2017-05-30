@@ -106,7 +106,7 @@ public class Categories {
 			}
 			preventException++;
 		}
-		System.out.println(categoriesArray);
+		//System.out.println(categoriesArray);
 		return categoriesArray;
 	}
 }

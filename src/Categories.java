@@ -6,20 +6,24 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Categories {
 
 	List<Pattern> patterns;
 	ArrayList<List<String>> arrayCategories = new ArrayList<List<String>>();
+	static List<String> chosenCategories = new ArrayList<String>();
 
-	public Categories(List<Pattern> patterns) {
+	public Categories(List<Pattern> patterns, List<String> chosenCategories) {
 		this.patterns = patterns;
-		makeCategories();
+		arrayCategories = makeCategories();
 		sortCategories();
+		Categories.chosenCategories = chosenCategories;
 	}
 
-	private void makeCategories() {
+	public static ArrayList<List<String>> makeCategories() {
+		ArrayList<List<String>> categories = new ArrayList<List<String>>();
 		try {
 			File fXmlFile = new File("requirementCategories.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -45,23 +49,22 @@ public class Categories {
 						category.add(eElement.getElementsByTagName("feature").item(i).getTextContent());
 					};
 
-					arrayCategories.add(category);
+					categories.add(category);
 				}
 			}
-			System.out.println(arrayCategories);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+		return categories;
 	}
 
 	private void sortCategories() {
 		for(Pattern pattern : patterns) {	
 			for(List<String> category : arrayCategories) {
 				for(String feature : category) {
-					if (pattern.toAspect().contains(feature)) {
+					if (pattern.toAspect().contains(feature))
 						pattern.category = category.get(0);
-					}
 				}
 			}
 			if(pattern.category == null) 
@@ -106,7 +109,14 @@ public class Categories {
 			}
 			preventException++;
 		}
-		//System.out.println(categoriesArray);
+		
+		// Remove all non-relevant categories
+		/*Iterator<List<String>> it = categoriesArray.iterator();
+		while(it.hasNext()){
+			if(!chosenCategories.contains(it.next().get(0)))
+				it.remove();
+				
+		}*/
 		return categoriesArray;
 	}
 }

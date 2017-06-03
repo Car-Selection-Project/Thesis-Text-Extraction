@@ -13,7 +13,6 @@ hs_err_pid*
 
 .idea/
 features/*
-features/
-/features/
-/features
 /features/*
+bin/features/*
+/bin/features/*

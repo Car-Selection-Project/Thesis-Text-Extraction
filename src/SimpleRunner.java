@@ -18,17 +18,17 @@ import org.json.simple.parser.JSONParser;
 
 public class SimpleRunner {
 
-	Map<String, List<String>> map;
+	static Map<String, List<String>> map;
 	Extract extract;
 	public double overallSentiment = 0;
 
-	public List<String> getKeys() {
+	public static List<String> getKeys() {
 		JSONParser parser = new JSONParser();
 		try {
 
 			// Read Reviews
 			Object obj = parser.parse(new FileReader(
-					"Reviews - medium.json"));
+					"Reviews - short.json"));
 
 			// Create JSON object
 			JSONObject jsonObject = (JSONObject) obj;
@@ -56,14 +56,13 @@ public class SimpleRunner {
 		}
 	}
 
-	@SuppressWarnings("rawtypes")
 	public List<Pattern> run(String key) {
 		List<String> patternlist = new ArrayList<String>();
 		List<Pattern> patterns = new ArrayList<Pattern>();
 		extract = new Extract();
 		// Loop through the map, extract pattern for each car, and write to file
 		Map<String,Integer> wordMap = new HashMap<String, Integer>();
-		Iterator<?> it = map.entrySet().iterator();
+		Iterator<Map.Entry<String, List<String>>> it = map.entrySet().iterator();
 
 		// If a single car is selected
 		if(!key.equals("all")) {
@@ -76,7 +75,7 @@ public class SimpleRunner {
 			// For all cars
 			try{
 				while (it.hasNext()) {
-					Map.Entry pair = (Map.Entry)it.next();
+					Map.Entry<String, List<String>> pair = it.next();
 					
 					// Prepare to write to file
 					System.out.println(pair.getKey() + " = " + pair.getValue());
@@ -116,7 +115,7 @@ public class SimpleRunner {
 				PrintWriter out = new PrintWriter(bw);
 				while (worditerator.hasNext()) {
 					// the key/value pair is stored here in pairs
-					Map.Entry pairs = worditerator.next();
+					Map.Entry<String, Integer> pairs = worditerator.next();
 
 					// since you only want the value, we only care about pairs.getValue(), which is written to out
 					out.println(pairs.getKey() + ": " + pairs.getValue());
@@ -168,5 +167,40 @@ public class SimpleRunner {
 						(e1, e2) -> e1, 
 						LinkedHashMap::new
 						));
+	}
+	public static double calculateOverallSentiment(List<Pattern> patterns) {
+		double sentiment = 0;
+		int count = 0;
+		for (Pattern pattern : patterns) {
+			sentiment += pattern.getSentiment();
+			count++;
+		}
+		sentiment = sentiment / count;
+		return sentiment;
+	}
+	public static List<String> trimKeys(List<String> keys) {
+		List<String> newKeys = new ArrayList<String>();
+		for (String key : keys) {
+			key = key.replace("_", " ");
+			key = key.substring(0, 1).toUpperCase() + key.substring(1);
+			newKeys.add(key);
+		}
+		if (newKeys.size() == keys.size())
+			return newKeys;
+		else
+			throw new Error();
+	}
+	
+	// Trim a single key
+	public static String trimKey(String key) {
+		key = key.replace("_", " ");
+		key = key.substring(0, 1).toUpperCase() + key.substring(1);
+		return key;
+	}
+
+	public static String unTrimKey(String key) {
+		key = key.replace(" ", "_");
+		key = key.substring(0, 1).toLowerCase() + key.substring(1);
+		return key;
 	}
 }

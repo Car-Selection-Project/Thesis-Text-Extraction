@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /**
@@ -33,15 +34,13 @@ public class GUI extends JFrame {
 	private JComboBox<String> combobox;
 	private JPanel controlPanel;
 	private static SimpleRunner runner;
-	private JTextArea text;
+	private static JTextArea text;
+	private List<String>chosenCategories = new ArrayList<String>();
+	private JTextField maxOutputField;
 
-	public static void main(String[] args) {
+	public GUI(List<String> chosenCategories) {
+		this.chosenCategories = chosenCategories;
 		runner = new SimpleRunner();
-		GUI gui = new GUI();
-		gui.run();
-	}
-
-	private GUI() {
 		Jframe = new JFrame("Car Reviewer");
 		Jframe.setMinimumSize(new Dimension(700, 500));
 		Jframe.setLayout(new GridBagLayout());
@@ -75,17 +74,33 @@ public class GUI extends JFrame {
 		c.gridx = 0;
 		c.gridy = 1;
 		Jframe.add(panel, c);
-
+		
+		JPanel outputPanel = new JPanel();
+		panel.setLayout(new FlowLayout());
+		JLabel maxOutputLabel = new JLabel("Maximum cars to show: ", SwingConstants.LEFT);
+		maxOutputField = new JTextField("5", SwingConstants.RIGHT);
+		outputPanel.add(maxOutputLabel);
+		outputPanel.add(maxOutputField);
+		c.fill = GridBagConstraints.CENTER;
+		c.anchor = GridBagConstraints.PAGE_START;
+		c.ipady = 10;
+		c.ipadx = 30;
+		c.weightx = 0.0;
+		c.gridwidth = 0;
+		c.gridx = 0;
+		c.gridy = 2;
+		Jframe.add(outputPanel, c);
+		
 		controlPanel = new JPanel();
 		controlPanel.setLayout(new FlowLayout());
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.anchor = GridBagConstraints.PAGE_START;
-		c.ipady = 20;
+		c.ipady = 10;
 		c.ipadx = 0;
-		c.weightx = 0.0;
-		c.gridwidth = 3;
+		c.weightx = 0.5;
+		c.gridwidth = 0;
 		c.gridx = 0;
-		c.gridy = 2;
+		c.gridy = 3;
 		Jframe.add(controlPanel, c);
 
 		text = new JTextArea("Feature		Sentiment \n");
@@ -103,6 +118,7 @@ public class GUI extends JFrame {
 		c.gridx = 1;
 		c.gridy = 5;
 		Jframe.add(scrollpane, c);
+		run();
 	}
 
 	private void run() {
@@ -111,8 +127,8 @@ public class GUI extends JFrame {
 		JButton runButton = new JButton("Run");
 
 		List<String> keys = new ArrayList<String>();
-		keys = (List<String>) runner.getKeys();
-		keys = trimKeys(keys);
+		keys = (List<String>) SimpleRunner.getKeys();
+		keys = SimpleRunner.trimKeys(keys);
 		java.util.Collections.sort(keys);
 		for (String key : keys) {
 			combobox.addItem(key);
@@ -137,53 +153,45 @@ public class GUI extends JFrame {
 				ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 				text.removeAll();
 				text.setText("Category		Sentiment \n");
+				API api;
+				List<String> cars = new ArrayList<String>();
 				if (combobox.getSelectedItem().equals("All")){
-					for (int i=1; i<combobox.getItemCount(); i++) {
+					api = new API(chosenCategories, cars);
+					/*for (int i=1; i<combobox.getItemCount(); i++) {
 						patterns = (ArrayList<Pattern>) runner
-								.run(unTrimKey((String) combobox.getItemAt(i)));
+								.run(SimpleRunner.unTrimKey((String) combobox.getItemAt(i)));
 						
 						if (patterns.size() != 0) {
 							text.setText(text.getText() + (String)combobox.getItemAt(i) + "\n");
-							runText(patterns);
+							runText(patterns, maxOutputField.getText().toString());
 						}
-					}
+					}*/
 				}
 				else {
-					patterns = (ArrayList<Pattern>) runner
-						.run(unTrimKey((String) combobox.getSelectedItem()));
-					runText(patterns);
+					/*patterns = (ArrayList<Pattern>) runner
+						.run(SimpleRunner.unTrimKey((String) combobox.getSelectedItem()));
+					runText(patterns, maxOutputField.getText().toString());*/
+					cars.add((String) combobox.getSelectedItem());
+					api = new API(chosenCategories, cars);
 				}
 				
-				/*// Categorise logic
-				new Categories(patterns);
-				ArrayList<List<String>> arrayCategories = Categories.groupCategories(patterns);
-				
-				text.removeAll();
-				text.setText("Category		Sentiment \n");
-				for (List<String> category : arrayCategories) {
-					double categorySentiment = 0;
-					for(int i=1;i<category.size();i++) {
-						categorySentiment += (Double.parseDouble(category.get(i)));
-					}
-					text.setText(text.getText() + category.get(0) + "		" + categorySentiment/(category.size()-1) + "\n");
-				}*/
-				//text.setText("Feature		Sentiment \n");
-				/*for (Pattern pattern : patterns) {
-					if (pattern.toAspect().length() <= 14)
-						text.setText(text.getText() + pattern.toAspect() + "		" + pattern.getSentiment() + "\n");
-					else 
-						text.setText(text.getText() + pattern.toAspect() + "	" + pattern.getSentiment() + "\n");
-				}
-				double overallSentiment = calculateOverallSentiment(patterns);
-				text.setText(text.getText() + "Overall" + "		" + overallSentiment + "\n");*/
 				text.revalidate();
 				text.repaint();
 			}
 		}
 	}
+	
+	public static void APIReturn(String str) throws NullPointerException {
+		try {
+			text.setText(text.getText() + str + "\n");
+			text.revalidate();
+			text.repaint();
+		}
+		catch (Exception e){}
+	}
 
-	private void runText(List<Pattern> patterns) {
-		new Categories(patterns);
+	private void runText(List<Pattern> patterns, String maxOutput) {
+		new Categories(patterns, chosenCategories);
 		ArrayList<List<String>> arrayCategories = Categories.groupCategories(patterns);
 		
 		for (List<String> category : arrayCategories) {
@@ -193,38 +201,9 @@ public class GUI extends JFrame {
 			}
 			text.setText(text.getText() + category.get(0) + "		" + categorySentiment/(category.size()-1) + "\n");
 		}
-		double overallSentiment = calculateOverallSentiment(patterns);
+		double overallSentiment = SimpleRunner.calculateOverallSentiment(patterns);
 		text.setText(text.getText() + "Overall" + "		" + overallSentiment + "\n\n");
 		text.revalidate();
 		text.repaint();
-	}
-	private List<String> trimKeys(List<String> keys) {
-		List<String> newKeys = new ArrayList<String>();
-		for (String key : keys) {
-			key = key.replace("_", " ");
-			key = key.substring(0, 1).toUpperCase() + key.substring(1);
-			newKeys.add(key);
-		}
-		if (newKeys.size() == keys.size())
-			return newKeys;
-		else
-			throw new Error();
-	}
-
-	private String unTrimKey(String key) {
-		key = key.replace(" ", "_");
-		key = key.substring(0, 1).toLowerCase() + key.substring(1);
-		return key;
-	}
-	
-	private double calculateOverallSentiment(List<Pattern> patterns) {
-		double sentiment = 0;
-		int count = 0;
-		for (Pattern pattern : patterns) {
-			sentiment += pattern.getSentiment();
-			count++;
-		}
-		sentiment = sentiment / count;
-		return sentiment;
 	}
 }

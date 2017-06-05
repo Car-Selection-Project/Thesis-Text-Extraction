@@ -2,6 +2,8 @@
 In this thesis project we show how to apply NLP tools to get scores from a vast amount of car reviews.
 
 ## Requirements
+Download the zip file with all required files from here: https://drive.google.com/file/d/0B-QdiGJgUMBwZTRXdWNKN3dGUEU/view?usp=sharing
+
 To run this tool, you need to have at least version 8 of JRE of JDK. If you want to run this tool from the command line, be sure to have set up the global [JAVA_HOME](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) environment variable. 
 
 ## How to use this tool?

@@ -54,6 +54,32 @@ Average: 5.0
 ```
 As you can see, all cars look excellent to Frank and because he did not have too many demands, this is only logical. 
 
+Let's make it a bit more complicated. Mark, Frank's brother, is looking for a very specific car. What he cares about most if: acceleration, control, handle, transmission, look, engine, seats, safety, mileage, mileage, price, value. The output for him will looks as follows:
+```
+Categories interested in: [acceleration, control, handle, transmission, look, engine, seats, safety, mileage, mileage, price, value]
+Cars interested in : []
+Ford fusion-hybrid 2016
+Value: 5.0
+Average: 5.0
+
+Volkswagen passat 2016
+Value: 4.0
+Average: 4.0
+
+Hyundai tucson 2016
+Value: 4.0
+Average: 4.0
+
+Volvo v60 2016
+Value: 4.0
+Average: 4.0
+
+Mercedes-benz c-class 2017
+Parts: 4.0
+Average: 4.0
+```
+This output is more interesting as this shows some defects in the program. For one, not all variables are found for each car. This may also be a good thing since no car will have features with all of the variables above. What's more concerning is the reason that why these cars have such high scores: these cars all have 1-3 features. Of course, for a car with 10+ features it is far more difficult to get a high average than a car with only a single high scoring feature. One solution is to add a minimum of features for each car before they can add to the scoreboard. 
+
 ## Future work
 * If car has less than x features, do not score
 * Use pre-annotated data

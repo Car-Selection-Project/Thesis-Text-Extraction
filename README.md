@@ -17,7 +17,7 @@ This is the minimal way to run the program from the commandline. If no arguments
 * A number indicating the maximum of shown cars (the top-x output).
 * One or more categories. For example quality, mileage, price, or performance.
 
-Note: The arguments passed are not case sensitive with exception of the categories. If a category has an uppercase level, it means the whole category gets taken as input instead of just a subcategory.
+Note: The arguments passed are not case sensitive with exception of the categories and do not have to be in order. If a category has an uppercase level, it means the whole category gets taken as input instead of just a subcategory.
 
 Let's make this more clear with an example.
 
@@ -27,9 +27,6 @@ java -jar "Car Reviewer V2.jar" api Quality price Value
 ``` 
 The output looks like this:
 ```
-Categories interested in: [Quality, price, Value]
-Cars interested in : []
-
 Categories interested in: [Quality, price, Value]
 Cars interested in : []
 Cadillac xts 2016

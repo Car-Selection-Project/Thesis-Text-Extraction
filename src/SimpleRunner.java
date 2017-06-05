@@ -1,8 +1,4 @@
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,7 +6,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.json.simple.JSONObject;
@@ -28,7 +23,7 @@ public class SimpleRunner {
 
 			// Read Reviews
 			Object obj = parser.parse(new FileReader(
-					"Reviews - short.json"));
+					"Reviews - full.json"));
 
 			// Create JSON object
 			JSONObject jsonObject = (JSONObject) obj;
@@ -61,7 +56,7 @@ public class SimpleRunner {
 		List<Pattern> patterns = new ArrayList<Pattern>();
 		extract = new Extract();
 		// Loop through the map, extract pattern for each car, and write to file
-		Map<String,Integer> wordMap = new HashMap<String, Integer>();
+		//Map<String,Integer> wordMap = new HashMap<String, Integer>();
 		Iterator<Map.Entry<String, List<String>>> it = map.entrySet().iterator();
 
 		// If a single car is selected
@@ -76,14 +71,15 @@ public class SimpleRunner {
 			try{
 				while (it.hasNext()) {
 					Map.Entry<String, List<String>> pair = it.next();
-					
+					// TODO: Still print out all patterns for each car to files?
 					// Prepare to write to file
-					System.out.println(pair.getKey() + " = " + pair.getValue());
+					/*System.out.println(pair.getKey() + " = " + pair.getValue());
 					File file = new File("features/" + pair.getKey().toString() + ".txt");
 					file.createNewFile();
 					FileWriter fw = new FileWriter("features/" + pair.getKey().toString() + ".txt", true);
 					BufferedWriter bw = new BufferedWriter(fw);
 					PrintWriter out = new PrintWriter(bw);
+					*/
 
 					// Extract patterns
 					List<Pattern> patternIterate = extract.run(pair.getValue().toString());
@@ -94,19 +90,19 @@ public class SimpleRunner {
 							if(patternToAdd != "") {	
 								patternlist.add(patternToAdd);
 								//System.out.println(patternToAdd);
-								out.println(patternToAdd);
-								out.println("Sentiment: " + pattern.getSentiment());
+							//	out.println(patternToAdd);
+							//	out.println("Sentiment: " + pattern.getSentiment());
 							}
 						}
 					}
 					else {
-						file.delete();
+					//	file.delete();
 						continue;
 					}
-					out.close();
+					//out.close();
 				}
 				//System.out.println(patternlist);
-				wordMap = countEachWord(patternlist);
+				/*wordMap = countEachWord(patternlist);
 				Iterator<Entry<String,Integer>> worditerator = wordMap.entrySet().iterator();
 				File file = new File("features/featurecount.txt");
 				file.createNewFile();
@@ -120,7 +116,7 @@ public class SimpleRunner {
 					// since you only want the value, we only care about pairs.getValue(), which is written to out
 					out.println(pairs.getKey() + ": " + pairs.getValue());
 				}
-				out.close();
+				out.close();*/
 			}
 			// it.remove(); // avoids a ConcurrentModificationException
 			catch(Exception e) {
@@ -139,7 +135,7 @@ public class SimpleRunner {
 		for(int i = 0; i<list.size(); i++) {
 			String word = list.get(i);
 			word = word.toLowerCase();
-		
+
 			if(word.isEmpty()) {
 				continue;
 			}
@@ -190,7 +186,7 @@ public class SimpleRunner {
 		else
 			throw new Error();
 	}
-	
+
 	// Trim a single key
 	public static String trimKey(String key) {
 		key = key.replace("_", " ");

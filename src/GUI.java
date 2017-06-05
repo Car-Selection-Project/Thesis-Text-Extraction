@@ -9,7 +9,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,24 +27,20 @@ import javax.swing.SwingConstants;
  */
 public class GUI extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JFrame Jframe;
 	private JLabel headerLabel;
 	private JComboBox<String> combobox;
 	private JPanel controlPanel;
-	private static SimpleRunner runner;
 	private static JTextArea text;
 	private List<String>chosenCategories = new ArrayList<String>();
 	private JTextField maxOutputField;
+	private JPanel categoriesPanel;
 
 	public GUI(List<String> chosenCategories) {
 		this.chosenCategories = chosenCategories;
-		runner = new SimpleRunner();
 		Jframe = new JFrame("Car Reviewer");
-		Jframe.setMinimumSize(new Dimension(700, 500));
+		Jframe.setMinimumSize(new Dimension(800, 600));
 		Jframe.setLayout(new GridBagLayout());
 		Jframe.setResizable(true);
 		Jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,7 +72,22 @@ public class GUI extends JFrame {
 		c.gridx = 0;
 		c.gridy = 1;
 		Jframe.add(panel, c);
-		
+
+		categoriesPanel = new JPanel();
+		categoriesPanel.setLayout(new BoxLayout(categoriesPanel, BoxLayout.Y_AXIS));
+		JLabel categoriesLabel = new JLabel("Select categories interested in:\n");
+		categoriesPanel.add(categoriesLabel);
+		c.fill = GridBagConstraints.CENTER;
+		c.anchor = GridBagConstraints.PAGE_START;
+		c.ipady = 10;
+		c.ipadx = 0;
+		c.weightx = 0.5;
+		c.gridwidth = 0;
+		c.gridx = 0;
+		c.gridy = 2;
+		Jframe.add(categoriesPanel, c);
+
+
 		JPanel outputPanel = new JPanel();
 		panel.setLayout(new FlowLayout());
 		JLabel maxOutputLabel = new JLabel("Maximum cars to show: ", SwingConstants.LEFT);
@@ -88,9 +101,9 @@ public class GUI extends JFrame {
 		c.weightx = 0.0;
 		c.gridwidth = 0;
 		c.gridx = 0;
-		c.gridy = 2;
+		c.gridy = 3;
 		Jframe.add(outputPanel, c);
-		
+
 		controlPanel = new JPanel();
 		controlPanel.setLayout(new FlowLayout());
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -100,7 +113,7 @@ public class GUI extends JFrame {
 		c.weightx = 0.5;
 		c.gridwidth = 0;
 		c.gridx = 0;
-		c.gridy = 3;
+		c.gridy = 4;
 		Jframe.add(controlPanel, c);
 
 		text = new JTextArea("Feature		Sentiment \n");
@@ -134,6 +147,18 @@ public class GUI extends JFrame {
 			combobox.addItem(key);
 		}
 
+		ArrayList<List<String>> categories = Categories.makeCategories();
+		for(List<String> category : categories) {
+			/*for(String subcategory : category) { // For all categories
+				JCheckBox checkbox = new JCheckBox(subcategory);
+				checkbox.setSelected(true);
+				categoriesPanel.add(checkbox);
+			}*/
+			JCheckBox checkbox = new JCheckBox(category.get(0));
+			checkbox.setSelected(true);
+			categoriesPanel.add(checkbox);
+		}
+
 		runButton.setActionCommand("Run");
 
 		runButton.addActionListener(new ButtonClickListener());
@@ -150,17 +175,22 @@ public class GUI extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();
 			if (command.equals("Run")) {
-				ArrayList<Pattern> patterns = new ArrayList<Pattern>();
+				//ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 				text.removeAll();
 				text.setText("Category		Sentiment \n");
-				API api;
 				List<String> cars = new ArrayList<String>();
+				chosenCategories.clear();
+				for (int i=1; i<categoriesPanel.getComponentCount(); i++) {
+					JCheckBox checkbox = (JCheckBox)categoriesPanel.getComponent(i);
+					if(checkbox.isSelected())
+						chosenCategories.add(checkbox.getText());
+				}
 				if (combobox.getSelectedItem().equals("All")){
-					api = new API(chosenCategories, cars);
+					new API(chosenCategories, cars);
 					/*for (int i=1; i<combobox.getItemCount(); i++) {
 						patterns = (ArrayList<Pattern>) runner
 								.run(SimpleRunner.unTrimKey((String) combobox.getItemAt(i)));
-						
+
 						if (patterns.size() != 0) {
 							text.setText(text.getText() + (String)combobox.getItemAt(i) + "\n");
 							runText(patterns, maxOutputField.getText().toString());
@@ -172,15 +202,15 @@ public class GUI extends JFrame {
 						.run(SimpleRunner.unTrimKey((String) combobox.getSelectedItem()));
 					runText(patterns, maxOutputField.getText().toString());*/
 					cars.add((String) combobox.getSelectedItem());
-					api = new API(chosenCategories, cars);
+					new API(chosenCategories, cars);
 				}
-				
+
 				text.revalidate();
 				text.repaint();
 			}
 		}
 	}
-	
+
 	public static void APIReturn(String str) throws NullPointerException {
 		try {
 			text.setText(text.getText() + str + "\n");
@@ -190,10 +220,10 @@ public class GUI extends JFrame {
 		catch (Exception e){}
 	}
 
-	private void runText(List<Pattern> patterns, String maxOutput) {
+	/*private void runText(List<Pattern> patterns, String maxOutput) {
 		new Categories(patterns, chosenCategories);
 		ArrayList<List<String>> arrayCategories = Categories.groupCategories(patterns);
-		
+
 		for (List<String> category : arrayCategories) {
 			double categorySentiment = 0;
 			for(int i=1;i<category.size();i++) {
@@ -205,5 +235,5 @@ public class GUI extends JFrame {
 		text.setText(text.getText() + "Overall" + "		" + overallSentiment + "\n\n");
 		text.revalidate();
 		text.repaint();
-	}
+	}*/
 }

@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -150,14 +152,22 @@ public class Extract {
 
 		return words;
 	}
-	
+
 	public double getOverallSentiment() {
 		return overallSentiment / sentimentCount;
 	}
-	
+
 	public List<Pattern> run(String text) {
 		List<Pattern> patterns = new ArrayList<Pattern>();
 		
+		PrintStream err = System.err;
+
+		// now make all writes to the System.err stream silent 
+		System.setErr(new PrintStream(new OutputStream() {
+		    public void write(int b) {
+		    }
+		}));
+
 		Properties props = new Properties();
 		props.setProperty("annotators", "tokenize, ssplit, pos, parse, sentiment");
 		StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
@@ -167,7 +177,6 @@ public class Extract {
 			Tree tree = sentence.get(SentimentAnnotatedTree.class);
 			double sentiment = RNNCoreAnnotations.getPredictedClass(tree);
 			overallSentiment += (sentiment + 1);
-			//System.out.println(sentence + " " + sentiment);
 			sentimentCount++;
 		}
 		for (Pattern pattern : patterns) {
@@ -175,16 +184,10 @@ public class Extract {
 			for (CoreMap sentence : PatternAnnotation.get(CoreAnnotations.SentencesAnnotation.class)) {
 				Tree tree = sentence.get(SentimentAnnotatedTree.class);
 				double sentiment = RNNCoreAnnotations.getPredictedClass(tree);
-				//System.out.println(sentence + " " + sentiment);
 				pattern.setSentiment(sentiment);
-				//System.out.println(sentiment);
-				//  for (CoreLabel token : sentence.get(CoreAnnotations.TokensAnnotation.class)) {
-				//      String lemma = token.get(CoreAnnotations.LemmaAnnotation.class);
-				//System.out.println(lemma);
-				// }
 			}
 		}
-
+		System.setErr(err);
 		return patterns;
 	}
 }

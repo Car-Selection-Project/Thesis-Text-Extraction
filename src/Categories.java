@@ -1,25 +1,24 @@
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
-import org.w3c.dom.Element;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class Categories {
 
 	List<Pattern> patterns;
 	ArrayList<List<String>> arrayCategories = new ArrayList<List<String>>();
-	static List<String> chosenCategories = new ArrayList<String>();
 
-	public Categories(List<Pattern> patterns, List<String> chosenCategories) {
+	public Categories(List<Pattern> patterns, ArrayList<List<String>> arrayCategories) {
 		this.patterns = patterns;
-		arrayCategories = makeCategories();
+		this.arrayCategories = arrayCategories;
 		sortCategories();
-		Categories.chosenCategories = chosenCategories;
 	}
 
 	public static ArrayList<List<String>> makeCategories() {
@@ -60,6 +59,7 @@ public class Categories {
 	}
 
 	private void sortCategories() {
+		//System.out.println("All categories: " + arrayCategories);
 		for(Pattern pattern : patterns) {	
 			for(List<String> category : arrayCategories) {
 				for(String feature : category) {
@@ -109,14 +109,15 @@ public class Categories {
 			}
 			preventException++;
 		}
-		
+
 		// Remove all non-relevant categories
 		/*Iterator<List<String>> it = categoriesArray.iterator();
 		while(it.hasNext()){
 			if(!chosenCategories.contains(it.next().get(0)))
 				it.remove();
-				
+
 		}*/
+		//System.out.println(categoriesArray);
 		return categoriesArray;
 	}
 }

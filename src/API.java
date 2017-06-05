@@ -9,24 +9,26 @@ public class API {
 
 	static int maxOutput = 5; //default is 5
 	static HashMap<String, Double> carScores = new HashMap<String, Double>(); // Hold scores for overall category Sentiment
-	static List<String> chosenCategories = new ArrayList<String>(); //TODO: categories to GUI
+	static List<String> chosenCategories = new ArrayList<String>();
+	static ArrayList<List<String>> arrayCategories = new ArrayList<List<String>>();
+	static List<String> keys = new ArrayList<String>();
 
 	//TODO: Make extended parameter to show all categories
-	//TODO: Use GUI as default to run from jar
+	//TODO: If car has less than x features, do not score
+	//TODO: Use pre-annotated data
 	public static void main(String[] args) {
 		List<String> cars = new ArrayList<String>();
 		// Get categories
-		ArrayList<List<String>> categories = new ArrayList<List<String>>();
-		categories = Categories.makeCategories();
+		arrayCategories = Categories.makeCategories();
 
 		//get keys
-		List<String> keys = new ArrayList<String>();
 		keys = (List<String>) SimpleRunner.getKeys();
 
 		for(String option : args) {
-			for (List<String> category : categories) {
-				if(category.contains(option))
-					chosenCategories.add(category.get(0));
+			for (List<String> category : arrayCategories) { 
+				for(String subcategory : category)
+					if(subcategory.equals(option))
+						chosenCategories.add(option);
 			}
 			if(keys.contains(option.toLowerCase()) || SimpleRunner.trimKeys(keys).contains(option))
 				cars.add(option);
@@ -54,10 +56,7 @@ public class API {
 	}
 
 	public API(List<String> chosenCategories, List<String> cars) {
-
 		// Get keys
-		List<String> keys = new ArrayList<String>();
-		keys = (List<String>) SimpleRunner.getKeys();
 		java.util.Collections.sort(keys);
 
 		ArrayList<Pattern> patterns = new ArrayList<Pattern>();
@@ -67,6 +66,7 @@ public class API {
 		HashMap<String, List<Pattern>> allFeatures = new HashMap<String, List<Pattern>>();
 
 		SimpleRunner runner = new SimpleRunner();
+		//printTime("Start");
 		// If no cars in arguments
 		if (cars.size() == 0){
 			for (int i=0; i<keys.size(); i++) {
@@ -87,8 +87,12 @@ public class API {
 				allFeatures.put(car, patterns);
 			}
 		}
+		//System.out.println("Time to get patterns:");
+		//printTime("Stop");
+		//printTime("Start");
 		show(allFeatures);
-
+		//System.out.println("Time to do other stuff:");
+		//printTime("Stop");
 	}
 
 	private static void calculateCarScore(HashMap<String, List<Pattern>> allFeatures) {
@@ -96,7 +100,7 @@ public class API {
 		while(it.hasNext()) {
 			Map.Entry<String, List<Pattern>> pair = (Map.Entry<String, List<Pattern>>)it.next();
 			ArrayList<List<String>> arrayCategories = Categories.groupCategories(pair.getValue());
-			new Categories(pair.getValue(), chosenCategories);
+			//new Categories(pair.getValue(), arrayCategories);
 			double overallCategorySentiment = 0;
 			for (List<String> category : arrayCategories) {
 				double categorySentiment = 0;
@@ -113,6 +117,8 @@ public class API {
 	}
 
 	private void show(HashMap<String, List<Pattern>> allFeatures) {
+		arrayCategories = Categories.makeCategories();
+		//System.out.println(arrayCategories);
 		// Refine features based on chosen categories
 		if(chosenCategories.size() != 0) {
 			//1. Make custom categories
@@ -120,24 +126,34 @@ public class API {
 			Iterator<List<String>> customIterator = customCategories.iterator();
 			while(customIterator.hasNext()) {
 				List<String> customCategory = customIterator.next();
-				if(!chosenCategories.contains(customCategory.get(0))) 
+				//System.out.println(customCategory.get(0));
+				if(!chosenCategories.contains(customCategory.get(0))) {}
 					customIterator.remove();
 			}
 			//2. Check if pattern categories are in the list of chosen categories
-			System.out.println(customCategories);
-			System.out.println(allFeatures);
+			//System.out.println(customCategories);
 			Iterator<Map.Entry<String, List<Pattern>>> it = allFeatures.entrySet().iterator();
 			while(it.hasNext()) {
 				List<Pattern> patterns = it.next().getValue();
-				new Categories(patterns, chosenCategories);
+				//System.out.println(arrayCategories);
+				new Categories(patterns, arrayCategories);
 				Iterator<Pattern> patternIterator = patterns.iterator();
 				while(patternIterator.hasNext()) {
 					Pattern pattern = patternIterator.next();
-					System.out.println(pattern.category);
+					//System.out.println(pattern.category);
 					Boolean found = false;
-					for(List<String>customCategory : customCategories) {
-						if(customCategory.contains(pattern.category)) { // Problem: category of pattern can be sub category
-							found=true;
+
+					for(String chosenCategory : chosenCategories) {
+						if(chosenCategory.substring(0, 1).equals(chosenCategory.substring(0, 1).toUpperCase()))
+							for(List<String>customCategory : customCategories) {
+								//System.out.println(pattern.head + " " + pattern.modifier);
+								if(customCategory.contains(pattern.category)) { 
+									found=true;
+								}
+							}
+						else {
+							if(chosenCategory.equals(pattern.head)|| chosenCategory.equals(pattern.modifier))
+								found=true;
 						}
 					}
 					if(!found)
@@ -148,7 +164,7 @@ public class API {
 				}
 			}
 		}
-		System.out.println(allFeatures);
+		//System.out.println(allFeatures);
 
 		calculateCarScore(allFeatures);
 		LinkedHashMap<String, Double> allResults = (LinkedHashMap<String, Double>) SimpleRunner.sortByValue(carScores);
@@ -203,6 +219,19 @@ public class API {
 			return false;  
 		}  
 		return true;  
+	}
+	static long startTime = 0;
+	static long stopTime = 0;
+	private static void printTime(String cmd) {
+		if(cmd.equals("Start"))
+			startTime = System.currentTimeMillis();
+		if(cmd.equals("Stop"))
+			stopTime = System.currentTimeMillis();
+		if(startTime!=0&&stopTime!=0) {
+			System.out.println(stopTime - startTime);
+			startTime = 0;
+			stopTime = 0;
+		}
 	}
 
 }

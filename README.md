@@ -52,3 +52,9 @@ Ford transit-connect 2016
 Value: 5.0
 Average: 5.0
 ```
+As you can see, all cars look excellent to Frank and because he did not have too many demands, this is only logical. 
+
+## Future work
+* If car has less than x features, do not score
+* Use pre-annotated data
+* Make extended parameter to show all categories

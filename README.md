@@ -2,7 +2,7 @@
 In this thesis project we show how to apply NLP tools to get scores from a vast amount of car reviews.
 
 ## Requirements
-Download the zip file with all required files from here: https://drive.google.com/file/d/0B-QdiGJgUMBwZTRXdWNKN3dGUEU/view?usp=sharing
+Download the zip file with all required files from [here](https://drive.google.com/file/d/0B-QdiGJgUMBwZTRXdWNKN3dGUEU/view?usp=sharing)
 
 To run this tool, you need to have at least version 8 of JRE of JDK. If you want to run this tool from the command line, be sure to have set up the global [JAVA_HOME](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) environment variable. 
 
@@ -54,6 +54,9 @@ Average: 5.0
 As you can see, all cars look excellent to Frank and because he did not have too many demands, this is only logical. 
 
 Let's make it a bit more complicated. Mark, Frank's brother, is looking for a very specific car. What he cares about most if: acceleration, control, handle, transmission, look, engine, seats, safety, mileage, mileage, price, value. The output for him will looks as follows:
+``` java
+java -jar "Car Reviewer V2.jar" api acceleration control handle transmission look engine seats safety mileage mileage price value
+```
 ```
 Categories interested in: [acceleration, control, handle, transmission, look, engine, seats, safety, mileage, mileage, price, value]
 Cars interested in : []
@@ -78,6 +81,9 @@ Parts: 4.0
 Average: 4.0
 ```
 This output is more interesting as this shows some defects in the program. For one, not all variables are found for each car. This may also be a good thing since no car will have features with all of the variables above. What's more concerning is the reason that why these cars have such high scores: these cars all have 1-3 features. Of course, for a car with 10+ features it is far more difficult to get a high average than a car with only a single high scoring feature. One solution is to add a minimum of features for each car before they can add to the scoreboard. 
+
+## Dataset
+The data being used here is a json file from [Edmunds.com](https://www.edmunds.com/). There are 489 cars with each 1-25 reviews. In total, there are approximately 60,000 words to be analysed, or 120 pages. For this reason, it takes well over half an hour to process all of the data if no cars are specified. The reason that this takes so long is because of Standford's CoreNLP, which takes 99% of the total time to process. The other 1% is to assign categories, calculate sentiment, and group everything together.  
 
 ## Future work
 * If car has less than x features, do not score

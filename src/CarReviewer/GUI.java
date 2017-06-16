@@ -1,3 +1,5 @@
+package CarReviewer;
+
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -149,11 +151,6 @@ public class GUI extends JFrame {
 
 		ArrayList<List<String>> categories = Categories.makeCategories();
 		for(List<String> category : categories) {
-			/*for(String subcategory : category) { // For all categories
-				JCheckBox checkbox = new JCheckBox(subcategory);
-				checkbox.setSelected(true);
-				categoriesPanel.add(checkbox);
-			}*/
 			JCheckBox checkbox = new JCheckBox(category.get(0));
 			checkbox.setSelected(true);
 			categoriesPanel.add(checkbox);
@@ -187,20 +184,8 @@ public class GUI extends JFrame {
 				}
 				if (combobox.getSelectedItem().equals("All")){
 					new API(chosenCategories, cars);
-					/*for (int i=1; i<combobox.getItemCount(); i++) {
-						patterns = (ArrayList<Pattern>) runner
-								.run(SimpleRunner.unTrimKey((String) combobox.getItemAt(i)));
-
-						if (patterns.size() != 0) {
-							text.setText(text.getText() + (String)combobox.getItemAt(i) + "\n");
-							runText(patterns, maxOutputField.getText().toString());
-						}
-					}*/
 				}
 				else {
-					/*patterns = (ArrayList<Pattern>) runner
-						.run(SimpleRunner.unTrimKey((String) combobox.getSelectedItem()));
-					runText(patterns, maxOutputField.getText().toString());*/
 					cars.add((String) combobox.getSelectedItem());
 					new API(chosenCategories, cars);
 				}
@@ -220,20 +205,4 @@ public class GUI extends JFrame {
 		catch (Exception e){}
 	}
 
-	/*private void runText(List<Pattern> patterns, String maxOutput) {
-		new Categories(patterns, chosenCategories);
-		ArrayList<List<String>> arrayCategories = Categories.groupCategories(patterns);
-
-		for (List<String> category : arrayCategories) {
-			double categorySentiment = 0;
-			for(int i=1;i<category.size();i++) {
-				categorySentiment += (Double.parseDouble(category.get(i)));
-			}
-			text.setText(text.getText() + category.get(0) + "		" + categorySentiment/(category.size()-1) + "\n");
-		}
-		double overallSentiment = SimpleRunner.calculateOverallSentiment(patterns);
-		text.setText(text.getText() + "Overall" + "		" + overallSentiment + "\n\n");
-		text.revalidate();
-		text.repaint();
-	}*/
 }

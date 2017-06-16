@@ -1,3 +1,5 @@
+package CarReviewer;
+
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,15 +8,18 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+
 public class SimpleRunner {
 
-	static Map<String, List<String>> map;
-	Extract extract;
+	private static Map<String, List<String>> map;
+	private Extract extract;
 	public double overallSentiment = 0;
 
 	public static List<String> getKeys() {
@@ -51,18 +56,16 @@ public class SimpleRunner {
 		}
 	}
 
-	public List<Pattern> run(String key) {
+	public List<Pattern> run(String key, StanfordCoreNLP pipeline) {
 		List<String> patternlist = new ArrayList<String>();
 		List<Pattern> patterns = new ArrayList<Pattern>();
 		extract = new Extract();
-		// Loop through the map, extract pattern for each car, and write to file
-		//Map<String,Integer> wordMap = new HashMap<String, Integer>();
 		Iterator<Map.Entry<String, List<String>>> it = map.entrySet().iterator();
 
 		// If a single car is selected
 		if(!key.equals("all")) {
 			// Extract patterns
-			patterns = extract.run(map.get(key).toString());
+			patterns = extract.run(map.get(key).toString(), pipeline);
 			overallSentiment = extract.getOverallSentiment();
 		}
 
@@ -71,54 +74,21 @@ public class SimpleRunner {
 			try{
 				while (it.hasNext()) {
 					Map.Entry<String, List<String>> pair = it.next();
-					// TODO: Still print out all patterns for each car to files?
-					// Prepare to write to file
-					/*System.out.println(pair.getKey() + " = " + pair.getValue());
-					File file = new File("features/" + pair.getKey().toString() + ".txt");
-					file.createNewFile();
-					FileWriter fw = new FileWriter("features/" + pair.getKey().toString() + ".txt", true);
-					BufferedWriter bw = new BufferedWriter(fw);
-					PrintWriter out = new PrintWriter(bw);
-					*/
 
 					// Extract patterns
-					List<Pattern> patternIterate = extract.run(pair.getValue().toString());
+					List<Pattern> patternIterate = extract.run(pair.getValue().toString(), pipeline);
 					patterns.addAll(patternIterate);
 					if (patternIterate.size() != 0) {
 						for (Pattern pattern : patternIterate) {
 							String patternToAdd = pattern.toAspect();
 							if(patternToAdd != "") {	
 								patternlist.add(patternToAdd);
-								//System.out.println(patternToAdd);
-							//	out.println(patternToAdd);
-							//	out.println("Sentiment: " + pattern.getSentiment());
 							}
 						}
 					}
-					else {
-					//	file.delete();
-						continue;
-					}
-					//out.close();
 				}
-				//System.out.println(patternlist);
-				/*wordMap = countEachWord(patternlist);
-				Iterator<Entry<String,Integer>> worditerator = wordMap.entrySet().iterator();
-				File file = new File("features/featurecount.txt");
-				file.createNewFile();
-				FileWriter fw = new FileWriter("features/featurecount.txt", true);
-				BufferedWriter bw = new BufferedWriter(fw);
-				PrintWriter out = new PrintWriter(bw);
-				while (worditerator.hasNext()) {
-					// the key/value pair is stored here in pairs
-					Map.Entry<String, Integer> pairs = worditerator.next();
-
-					// since you only want the value, we only care about pairs.getValue(), which is written to out
-					out.println(pairs.getKey() + ": " + pairs.getValue());
-				}
-				out.close();*/
 			}
-			// it.remove(); // avoids a ConcurrentModificationException
+
 			catch(Exception e) {
 				e.printStackTrace();
 			} 

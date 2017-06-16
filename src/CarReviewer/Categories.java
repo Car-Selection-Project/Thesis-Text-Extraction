@@ -1,3 +1,5 @@
+package CarReviewer;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +14,8 @@ import org.w3c.dom.NodeList;
 
 public class Categories {
 
-	List<Pattern> patterns;
-	ArrayList<List<String>> arrayCategories = new ArrayList<List<String>>();
+	private List<Pattern> patterns;
+	private ArrayList<List<String>> arrayCategories = new ArrayList<List<String>>();
 
 	public Categories(List<Pattern> patterns, ArrayList<List<String>> arrayCategories) {
 		this.patterns = patterns;
@@ -53,13 +55,13 @@ public class Categories {
 			}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Oops, something went wrong!");
+			GUI.APIReturn("Oops, something went wrong!");
 		}
 		return categories;
 	}
 
 	private void sortCategories() {
-		//System.out.println("All categories: " + arrayCategories);
 		for(Pattern pattern : patterns) {	
 			for(List<String> category : arrayCategories) {
 				for(String feature : category) {
@@ -67,8 +69,9 @@ public class Categories {
 						pattern.category = category.get(0);
 				}
 			}
-			if(pattern.category == null) 
+			if(pattern.category == null) {
 				pattern.category = "Other";
+			}
 		}
 	}
 
@@ -110,14 +113,6 @@ public class Categories {
 			preventException++;
 		}
 
-		// Remove all non-relevant categories
-		/*Iterator<List<String>> it = categoriesArray.iterator();
-		while(it.hasNext()){
-			if(!chosenCategories.contains(it.next().get(0)))
-				it.remove();
-
-		}*/
-		//System.out.println(categoriesArray);
 		return categoriesArray;
 	}
 }

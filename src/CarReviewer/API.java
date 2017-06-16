@@ -1,9 +1,17 @@
+package CarReviewer;
+
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+
+import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 
 public class API {
 
@@ -65,34 +73,44 @@ public class API {
 
 		HashMap<String, List<Pattern>> allFeatures = new HashMap<String, List<Pattern>>();
 
+		PrintStream err = System.err;
+		// now make all writes to the System.err stream silent 
+		System.setErr(new PrintStream(new OutputStream() {
+		    public void write(int b) {
+		    }
+		}));
+		
+		Properties props = new Properties();
+		props.setProperty("annotators", "tokenize, ssplit, pos, parse, sentiment");
+		StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 		SimpleRunner runner = new SimpleRunner();
-		//printTime("Start");
+		 printTime("Start");
 		// If no cars in arguments
 		if (cars.size() == 0){
 			for (int i=0; i<keys.size(); i++) {
 				patterns = (ArrayList<Pattern>) runner
-						.run(SimpleRunner.unTrimKey((String) keys.get(i)));
+						.run(SimpleRunner.unTrimKey((String) keys.get(i)), pipeline);
 
 				if (patterns.size() != 0) {
 					allFeatures.put(keys.get(i), patterns);
 				}
-				//patterns.clear();
 			}
 		}
 		// If cars specified
 		else {
 			for(String car : cars) {
 				patterns = (ArrayList<Pattern>) runner
-						.run(SimpleRunner.unTrimKey(car));
+						.run(SimpleRunner.unTrimKey(car), pipeline);
 				allFeatures.put(car, patterns);
 			}
 		}
-		//System.out.println("Time to get patterns:");
-		//printTime("Stop");
-		//printTime("Start");
+		System.setErr(err);
+		System.out.println("Time to get patterns:");
+		printTime("Stop");
+		printTime("Start");
 		show(allFeatures);
-		//System.out.println("Time to do other stuff:");
-		//printTime("Stop");
+		System.out.println("Time to do other stuff:");
+		printTime("Stop");
 	}
 
 	private static void calculateCarScore(HashMap<String, List<Pattern>> allFeatures) {
@@ -111,7 +129,7 @@ public class API {
 				//System.out.println(overallCategorySentiment);
 			}
 			carScores.put(pair.getKey(), overallCategorySentiment/arrayCategories.size());
-
+			//System.out.println("Car scores:  " + carScores);
 
 		}
 	}
@@ -119,6 +137,12 @@ public class API {
 	private void show(HashMap<String, List<Pattern>> allFeatures) {
 		arrayCategories = Categories.makeCategories();
 		//System.out.println(arrayCategories);
+		// Assign categories
+		Iterator<Map.Entry<String, List<Pattern>>> featureIterator = allFeatures.entrySet().iterator();
+		while(featureIterator.hasNext()) {
+			new Categories(featureIterator.next().getValue(), arrayCategories);
+		}
+		
 		// Refine features based on chosen categories
 		if(chosenCategories.size() != 0) {
 			//1. Make custom categories
@@ -127,7 +151,7 @@ public class API {
 			while(customIterator.hasNext()) {
 				List<String> customCategory = customIterator.next();
 				//System.out.println(customCategory.get(0));
-				if(!chosenCategories.contains(customCategory.get(0))) {}
+				if(!chosenCategories.contains(customCategory.get(0))) 
 					customIterator.remove();
 			}
 			//2. Check if pattern categories are in the list of chosen categories
@@ -136,7 +160,6 @@ public class API {
 			while(it.hasNext()) {
 				List<Pattern> patterns = it.next().getValue();
 				//System.out.println(arrayCategories);
-				new Categories(patterns, arrayCategories);
 				Iterator<Pattern> patternIterator = patterns.iterator();
 				while(patternIterator.hasNext()) {
 					Pattern pattern = patternIterator.next();
@@ -178,7 +201,6 @@ public class API {
 			count++;
 		}
 
-
 		// Print final results
 		for (String car : results.keySet()) {
 			List<Pattern> patterns = allFeatures.get(car);
@@ -200,8 +222,8 @@ public class API {
 			for(int i=1;i<category.size();i++) {
 				categorySentiment += (Double.parseDouble(category.get(i)));
 			}
-			System.out.println(category.get(0) + ": " + categorySentiment/(category.size()-1));
-			GUI.APIReturn(category.get(0) + ": " + categorySentiment/(category.size()-1));
+			System.out.println(category.get(0) + ": " + new DecimalFormat("##.##").format(categorySentiment/(category.size()-1)));
+			GUI.APIReturn(category.get(0) + ": " + new DecimalFormat("##.##").format(categorySentiment/(category.size()-1)));
 		}
 		//double overallSentiment = SimpleRunner.calculateOverallSentiment(patterns);
 		//System.out.println(Overall" + "		" + overallSentiment + "\n\n");

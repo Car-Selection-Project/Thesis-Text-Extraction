@@ -1,3 +1,5 @@
+package CarReviewer;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -157,20 +159,9 @@ public class Extract {
 		return overallSentiment / sentimentCount;
 	}
 
-	public List<Pattern> run(String text) {
+	public List<Pattern> run(String text, StanfordCoreNLP pipeline) {
 		List<Pattern> patterns = new ArrayList<Pattern>();
-		
-		PrintStream err = System.err;
 
-		// now make all writes to the System.err stream silent 
-		System.setErr(new PrintStream(new OutputStream() {
-		    public void write(int b) {
-		    }
-		}));
-
-		Properties props = new Properties();
-		props.setProperty("annotators", "tokenize, ssplit, pos, parse, sentiment");
-		StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 		Annotation annotation = pipeline.process(text.toLowerCase());
 		for (CoreMap sentence : annotation.get(CoreAnnotations.SentencesAnnotation.class)) {
 			patterns.addAll(ExtractSentencePatterns(sentence));
@@ -187,7 +178,6 @@ public class Extract {
 				pattern.setSentiment(sentiment);
 			}
 		}
-		System.setErr(err);
 		return patterns;
 	}
 }

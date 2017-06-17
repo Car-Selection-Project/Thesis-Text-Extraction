@@ -64,7 +64,7 @@ public class Pattern {
 	}
 
 	public String toAspect() {
-		return modifier + " " + head;
+		return modifier + " " + head; // Swapped head and modifier for more natural feature
 	}
 
 	public double getSentiment() {

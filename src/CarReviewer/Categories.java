@@ -25,6 +25,8 @@ public class Categories {
 
 	public static ArrayList<List<String>> makeCategories() {
 		ArrayList<List<String>> categories = new ArrayList<List<String>>();
+		
+		// Read categories from XML
 		try {
 			File fXmlFile = new File("requirementCategories.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -61,6 +63,7 @@ public class Categories {
 		return categories;
 	}
 
+	// Assign top-level categories to features
 	private void sortCategories() {
 		for(Pattern pattern : patterns) {	
 			for(List<String> category : arrayCategories) {
@@ -69,6 +72,8 @@ public class Categories {
 						pattern.category = category.get(0);
 				}
 			}
+			
+			// If no category matches, assign "Other"
 			if(pattern.category == null) {
 				pattern.category = "Other";
 			}
@@ -77,10 +82,9 @@ public class Categories {
 
 	public static ArrayList<List<String>> groupCategories(List<Pattern> patterns) {
 		ArrayList<List<String>> categoriesArray = new ArrayList<List<String>>();
-		// Clear category lists
-
 		int preventException = 0;
-		// Create category lists from patterns
+		
+		// Create category lists from patterns, and add sentiment to the list
 		for (Pattern pattern : patterns) {
 			int i = 0;
 			boolean found = false;

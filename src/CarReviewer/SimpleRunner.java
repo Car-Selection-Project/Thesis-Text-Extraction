@@ -8,7 +8,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.stream.Collectors;
 
 import org.json.simple.JSONObject;
@@ -22,6 +21,7 @@ public class SimpleRunner {
 	private Extract extract;
 	public double overallSentiment = 0;
 
+	// Read JSON and create HashMap with car as key and reviews as values
 	public static List<String> getKeys() {
 		JSONParser parser = new JSONParser();
 		try {
@@ -44,9 +44,8 @@ public class SimpleRunner {
 				if (!map.containsKey(key)) {
 					map.put(key, new ArrayList<String>());
 				}
+				
 				map.get(key).add(value);
-
-				//System.out.println(key + " : " + map.get(key));
 			}
 			return new ArrayList<String>(map.keySet());
 		}
@@ -56,73 +55,21 @@ public class SimpleRunner {
 		}
 	}
 
+	// Extract patterns
 	public List<Pattern> run(String key, StanfordCoreNLP pipeline) {
-		List<String> patternlist = new ArrayList<String>();
 		List<Pattern> patterns = new ArrayList<Pattern>();
 		extract = new Extract();
-		Iterator<Map.Entry<String, List<String>>> it = map.entrySet().iterator();
 
-		// If a single car is selected
-		if(!key.equals("all")) {
-			// Extract patterns
-			patterns = extract.run(map.get(key).toString(), pipeline);
-			overallSentiment = extract.getOverallSentiment();
-		}
-
-		else {
-			// For all cars
-			try{
-				while (it.hasNext()) {
-					Map.Entry<String, List<String>> pair = it.next();
-
-					// Extract patterns
-					List<Pattern> patternIterate = extract.run(pair.getValue().toString(), pipeline);
-					patterns.addAll(patternIterate);
-					if (patternIterate.size() != 0) {
-						for (Pattern pattern : patternIterate) {
-							String patternToAdd = pattern.toAspect();
-							if(patternToAdd != "") {	
-								patternlist.add(patternToAdd);
-							}
-						}
-					}
-				}
-			}
-
-			catch(Exception e) {
-				e.printStackTrace();
-			} 
-		}
+		// Extract patterns
+		patterns = extract.run(map.get(key).toString(), pipeline);
+		overallSentiment = extract.getOverallSentiment();
+			
 		return patterns;
 
 	}
 
-	// Count each word function
-	public static Map<String, Integer> countEachWord(List<String> list) {
-
-		HashMap<String, Integer> map = new HashMap<>();
-
-		for(int i = 0; i<list.size(); i++) {
-			String word = list.get(i);
-			word = word.toLowerCase();
-
-			if(word.isEmpty()) {
-				continue;
-			}
-			if(map.containsKey(word)) {
-				map.put(word, map.get(word)+1);
-			}
-			else {
-				map.put(word, 1);
-			}
-
-
-		}
-
-		map = (HashMap<String, Integer>)sortByValue(map);
-
-		return map;
-	}
+	// Sort HashMap on highest values
+	// From: https://stackoverflow.com/questions/109383/sort-a-mapkey-value-by-values-java by Carter Page
 	public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
 		return map.entrySet()
 				.stream()
@@ -134,16 +81,8 @@ public class SimpleRunner {
 						LinkedHashMap::new
 						));
 	}
-	public static double calculateOverallSentiment(List<Pattern> patterns) {
-		double sentiment = 0;
-		int count = 0;
-		for (Pattern pattern : patterns) {
-			sentiment += pattern.getSentiment();
-			count++;
-		}
-		sentiment = sentiment / count;
-		return sentiment;
-	}
+
+	// Make all keys pretty
 	public static List<String> trimKeys(List<String> keys) {
 		List<String> newKeys = new ArrayList<String>();
 		for (String key : keys) {
@@ -157,13 +96,14 @@ public class SimpleRunner {
 			throw new Error();
 	}
 
-	// Trim a single key
+	// Make a single key pretty
 	public static String trimKey(String key) {
 		key = key.replace("_", " ");
 		key = key.substring(0, 1).toUpperCase() + key.substring(1);
 		return key;
 	}
 
+	// Reverse trimming to match with database
 	public static String unTrimKey(String key) {
 		key = key.replace(" ", "_");
 		key = key.substring(0, 1).toLowerCase() + key.substring(1);
